@@ -4,7 +4,7 @@ export const baseURL = 'https://jsonplaceholder.typicode.com/';
 
 const headers = {
     'Content-Type': 'application/json',
-    'type': 2
+    // Custom Headers
 }
 
 const axiosInstance = axios.create({
@@ -13,7 +13,6 @@ const axiosInstance = axios.create({
 
 
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
-    debugger
     request.headers = headers;
     return request;
 },

@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { getRequest } from './services/httpService';
+import { httpService } from './services/httpService';
 
 const App: React.FC = () => {
   const clickHandler = (): void => {
-    getRequest('users')
+    httpService.getRequest('users')
   }
 
   return (

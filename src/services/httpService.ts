@@ -20,4 +20,10 @@ const deleteRequest = (url: string): void => {
     axiosInstance.delete(url)
 }
 
-export { getRequest, postRequest, putRequest, patchRequest, deleteRequest };
+export const httpService = {
+    getRequest,
+    postRequest,
+    putRequest,
+    patchRequest,
+    deleteRequest
+};
