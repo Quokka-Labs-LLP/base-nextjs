@@ -1,9 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 
-export const baseURL = 'baseURL';
+export const baseURL = 'https://jsonplaceholder.typicode.com/';
 
 const headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'type': 2
 }
 
 const axiosInstance = axios.create({
@@ -12,17 +13,18 @@ const axiosInstance = axios.create({
 
 
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
+    debugger
     request.headers = headers;
     return request;
 },
-    (err: AxiosError<any>) => {
+    <T>(err: AxiosError<T>) => {
         return Promise.reject(err);
     });
 
-axiosInstance.interceptors.response.use((response: AxiosResponse<any>) => {
+axiosInstance.interceptors.response.use(<T>(response: AxiosResponse<T>) => {
     return response;
 },
-    (err: AxiosError<any>) => {
+    <T>(err: AxiosError<T>) => {
         return Promise.reject(err);
     }
 );

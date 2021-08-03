@@ -1,17 +1,17 @@
+import React from 'react';
 import './App.css';
-import axiosInstance from './services/httpInterceptor';
 import { getRequest } from './services/httpService';
 
-function App() {
-  const clickHandler = () => {
-    getRequest('https://jsonplaceholder.typicode.com/users')
+const App: React.FC = () => {
+  const clickHandler = (): void => {
+    getRequest('users')
   }
 
   return (
     <div className="App">
       <button type="button" onClick={clickHandler}>Click</button>
     </div>
-  );
+  )
 }
 
 export default App;
