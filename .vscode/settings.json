@@ -1,0 +1,18 @@
+{
+  "editor.minimap.enabled": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.arrowParens": "avoid",
+  "prettier.enable": true,
+  "prettier.endOfLine": "lf",
+  "prettier.jsxSingleQuote": true,
+  "prettier.semi": true,
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all"
+}

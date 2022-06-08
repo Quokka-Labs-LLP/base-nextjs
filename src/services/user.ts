@@ -27,6 +27,8 @@ const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 })
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: baseQueryWithRetry,
+  refetchOnFocus: true,
+  keepUnusedDataFor: 20,
   endpoints: (builder) => ({
     login: builder.mutation<{ token: string; user: User }, any>({
       query: (credentials: any) => ({
@@ -34,6 +36,8 @@ export const userApi = createApi({
         method: 'POST',
         body: credentials,
       }),
+      // Pick out data and prevent nested properties in a hook or selector
+      // transformResponse: (response: { data: Post }, meta, arg) => response.data,
     }),
     getUsers: builder.query<User[], string>({
       query: () => `/users`,
@@ -43,4 +47,3 @@ export const userApi = createApi({
 
 export const { useGetUsersQuery, useLoginMutation } = userApi;
 export const { endpoints: { login } } = userApi;
-
