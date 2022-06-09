@@ -1,12 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ConfigureStoreOptions } from '@reduxjs/toolkit'
 
-import reducer from './reducers';
-import middleware from './middleware';
+import reducer from './reducers'
+import middleware from './middleware'
 
-export const store: any = configureStore({
+export const createStore = (
+  options?: ConfigureStoreOptions['preloadedState'] | undefined
+): any => configureStore({
   reducer,
-  ...middleware
-});
+  ...middleware,
+  ...options,
+})
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const store: any = createStore()
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

@@ -1,7 +1,8 @@
-import counter from './counter';
-import { userApi } from '../services/user';
+import { userApi } from '../services/user'
+import auth, { authApi } from './auth'
 
 export default {
-  counter,
-  [userApi.reducerPath]: userApi.reducer
-};
+  auth,
+  [userApi.reducerPath]: userApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
+}
