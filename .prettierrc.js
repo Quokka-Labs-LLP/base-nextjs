@@ -1,6 +1,5 @@
 module.exports = {
   arrowParens: 'avoid',
-  enable: true,
   endOfLine: 'lf',
   jsxSingleQuote: true,
   semi: false,
@@ -8,5 +7,4 @@ module.exports = {
   singleQuote: true,
   tabWidth: 2,
   trailingComma: 'all',
-  useEditorConfig: true,
 }
