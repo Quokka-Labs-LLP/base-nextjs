@@ -1,7 +1,7 @@
 import { fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 import { RootState } from './redux/store'
 
-export const apiRoot = process.env.REACT_APP_API_ROOT;
+export const apiRoot = process.env.REACT_APP_API_ROOT
 
 // Create our baseQuery instance
 const baseQuery = fetchBaseQuery({

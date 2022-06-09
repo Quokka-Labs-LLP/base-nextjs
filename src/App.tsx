@@ -1,12 +1,35 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 
-const App: React.FC = () => {
+import ProtectedRoutes from './navigation/PrivateRoutes'
+import { Loader } from './components'
+import './App.css'
+
+const Login = React.lazy(() => import('./pages/login'))
+const Home = React.lazy(() => import('./pages/home'))
+
+export default function App(): JSX.Element {
   return (
-    <div>
-      React
-    </div>
-  );
-}
+    <>
+      <Routes>
+        <Route
+          path='/login'
+          element={
+            <Loader>
+              <Login />
+            </Loader>
+          }
+        />
 
-export default App;
+        <Route
+          path='/home'
+          element={
+            <ProtectedRoutes>
+              <Home />
+            </ProtectedRoutes>
+          }
+        />
+      </Routes>
+    </>
+  )
+}
