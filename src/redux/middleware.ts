@@ -6,5 +6,6 @@ import { authApi } from './auth'
  * and other useful features of `rtk-query`.
  */
 export default {
+  // eslint-disable-next-line
   middleware: (getDefaultMiddleware: any): any => getDefaultMiddleware().concat(userApi.middleware, authApi.middleware),
 }

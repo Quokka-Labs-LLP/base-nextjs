@@ -1,8 +1,13 @@
 import { useMemo } from 'react'
 import { useAppSelector } from './redux'
 import { RootState } from '../redux/store'
+import { User } from '../redux/auth'
 
-export default function useAuth() {
+export interface CurrentUser {
+  user: User
+}
+
+export default function useAuth(): CurrentUser {
   const selectCurrentUser = (state: RootState) => state.auth.user
   const user = useAppSelector(selectCurrentUser)
 

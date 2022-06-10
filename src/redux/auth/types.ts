@@ -1,6 +1,9 @@
+export type User = null | string
+export type AuthToken = null | string
+
 export interface AuthState {
-  user: null | string
-  token: null | string
+  user: User
+  token: AuthToken
   isAuthenticated: boolean
 }
 

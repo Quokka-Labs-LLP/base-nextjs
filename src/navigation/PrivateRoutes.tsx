@@ -4,7 +4,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Loader } from '../components'
 import useAuth from '../hooks/useAuth'
 
-export default function ProtectedRoutes(props: any): JSX.Element {
+export interface ProtectedRoutesProps {
+  children: Element
+}
+
+export default function ProtectedRoutes(props: ProtectedRoutesProps): JSX.Element {
   const { user } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
@@ -13,6 +17,10 @@ export default function ProtectedRoutes(props: any): JSX.Element {
     navigate('/login', { replace: true, state: { from: location } })
     return <React.Fragment />
   } else {
-    return <Loader>{props.children}</Loader>
+    return (
+      <Loader>
+        <>{props.children}</>
+      </Loader>
+    )
   }
 }

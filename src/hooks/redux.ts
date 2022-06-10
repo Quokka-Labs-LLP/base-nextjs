@@ -13,7 +13,8 @@ import type { RootState, AppDispatch } from '../redux/store'
  * }
  * @returns
  */
-export const useAppDispatch: AppDispatch = () => useDispatch<AppDispatch>()
+// eslint-disable-next-line
+export const useAppDispatch: any = () => useDispatch<AppDispatch>()
 
 /**
  * Redux selector to get data from the redux store.

@@ -1,6 +1,7 @@
 import api from './api'
 import slice from './slice'
 
+export * from './types'
 export const {
   endpoints: { login },
 } = api
