@@ -1,19 +1,19 @@
-export type User = null | string
-export type AuthToken = null | string
-
-export interface AuthState {
-  user: User
-  token: AuthToken
-  isAuthenticated: boolean
+export interface User {
+  id: number | string
+  name: string
+  email: string
 }
 
-export interface LoginResponse {
-  access_token: string
-  expires_in: number
-  token_type: string
+export interface AuthState {
+  user: null | User
+  token: null | string
 }
 
 export interface LoginRequest {
   username: string
   password: string
+}
+
+export interface LoginResponse {
+  token: null | string
 }

@@ -1,12 +1,5 @@
-import api from './api'
-import slice from './slice'
+import { useLoginMutation, api } from './auth.api'
+import authReducer, { login, logout, renewToken } from './auth.slice'
 
 export * from './types'
-export const {
-  endpoints: { login },
-} = api
-export { default as authApi } from './api'
-export const {
-  actions: { logout },
-} = slice
-export default slice.reducer
+export { useLoginMutation, api as authApi, authReducer, login, logout, renewToken }

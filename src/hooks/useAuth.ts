@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useAppSelector } from './redux'
-import { RootState } from '../redux/store'
+import { RootState } from '../redux'
 import { User } from '../redux/auth'
 
 export interface CurrentUser {

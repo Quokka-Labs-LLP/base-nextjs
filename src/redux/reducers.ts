@@ -1,8 +1,7 @@
-import { userApi } from '../services/user'
-import auth, { authApi } from './auth'
+import { authApi, authReducer } from './auth'
 
-export default {
-  auth,
-  [userApi.reducerPath]: userApi.reducer,
+const reducers = {
+  auth: authReducer,
   [authApi.reducerPath]: authApi.reducer,
 }
+export default reducers

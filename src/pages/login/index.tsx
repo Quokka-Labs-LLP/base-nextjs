@@ -1,25 +1,29 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { authApi } from '../../redux/auth'
+import { useLoginMutation } from '../../redux/auth'
 
 export default function Login(): JSX.Element {
-  const [login] = authApi.useLoginMutation()
+  const [login] = useLoginMutation()
+  const navigate = useNavigate()
 
   async function tryLogin() {
-    const response = await login({
-      username: '',
+    const result = await login({
+      username: 'eve.holt@reqrs.in',
       password: '',
     })
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    result?.data?.token && navigate('/app')
   }
 
   return (
-    <div>
-      <input type='text' placeholder='Email Id' aria-placeholder='Email Id' />
-      <br />
-      <input type='password' placeholder='Password' aria-placeholder='Password' />
-      <br />
+    <>
+      <input type='email' placeholder='Email ID' />
+      <input type='password' placeholder='Password' />
 
       <button onClick={tryLogin}>Login</button>
-    </div>
+    </>
   )
 }

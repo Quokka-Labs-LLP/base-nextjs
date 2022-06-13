@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import type { RootState, AppDispatch } from '../redux/store'
+import type { RootState, AppDispatch } from '../redux'
 
 /**
  * Dispatch any action in order to mutate the redux store.
