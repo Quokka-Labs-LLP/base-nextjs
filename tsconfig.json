@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5", // Specify ECMAScript target version
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ], // List of library files to be included in the compilation
+    "lib": ["dom", "dom.iterable", "esnext"], // List of library files to be included in the compilation
     "allowJs": true, // Allow Javascript files to be compiled
     "skipLibCheck": true, // Skip type checking of all declaration files
     "esModuleInterop": true, // Disable namespace imports (import * as fs from 'fs') and enables CJS/AMD/UMD style imports (import fs from 'fs')
@@ -13,7 +9,7 @@
     "strict": true, // Enable all strict type checking options
     "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
     "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement
-    "module": "esnext", // Specify module code generation 
+    "module": "esnext", // Specify module code generation
     "moduleResolution": "node", // Resolve modules using Node.js style
     "resolveJsonModule": true, // Include modules imported with .json extension
     "isolatedModules": true, // Unconditionally emit imports from unresolved files
@@ -23,9 +19,7 @@
     "declaration": true, // Generate corresponding .d.ts file
     "noUnusedLocals": false, // Report errors on unused locals
     "noUnusedParameters": true, // Report errors on unused parameters
-    "incremental": true, // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
+    "incremental": true // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
