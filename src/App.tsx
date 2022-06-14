@@ -1,6 +1,15 @@
 import React from 'react'
-import './App.css'
+
+import { Button } from './components'
 
 export default function App(): JSX.Element {
-  return <div>React</div>
+  return (
+    <>
+      <Button />
+      <Button filled />
+      <Button elevated />
+      <Button filled-toned />
+      <Button outline />
+    </>
+  )
 }
