@@ -1,6 +1,7 @@
-import { authApi } from './auth'
+import { authApi, authReducer } from './auth'
 
 const reducer = {
+  auth: authReducer,
   [authApi.reducerPath]: authApi.reducer,
 }
 
