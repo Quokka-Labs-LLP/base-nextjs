@@ -1,14 +1,20 @@
 import React from 'react'
-import './App.css'
 
-const App: React.FC = () => {
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+
+import { Features } from './components'
+
+export default function App() {
   return (
-    <>
-      <h1 style={{ textAlign: 'center' }}>Welcome to React v18 with Typescript.</h1>
-      <p style={{ textAlign: 'center', margin: 0 }}>React: v18.1.0</p>
-      <p style={{ textAlign: 'center', margin: 0 }}>Typescript: v4.7.3</p>
-    </>
+    <Container maxWidth='sm'>
+      <Box sx={{ my: 4 }}>
+        <Typography variant='h4' component='h1' gutterBottom>
+          Create React App example with TypeScript
+        </Typography>
+        <Features />
+      </Box>
+    </Container>
   )
 }
-
-export default App
