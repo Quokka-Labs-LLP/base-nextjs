@@ -1,0 +1,41 @@
+@import '../../styles/index.scss';
+
+.button {
+  display: flex;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 50px;
+  background-color: transparent;
+  font-family: $font-family;
+  margin: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.button-filled {
+  background-color: $app-primary-color;
+  color: #fff;
+}
+
+.button-filled-toned {
+  background-color: $app-secondary-color;
+}
+
+.button-outline {
+  border: 1px solid #555;
+  color: $app-primary-color;
+}
+
+.button-elevated {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.button-extended-fab {
+  padding: 16px;
+  border-radius: 14px;
+  line-height: 0.8;
+
+  > img {
+    margin-right: 4px;
+  }
+}
