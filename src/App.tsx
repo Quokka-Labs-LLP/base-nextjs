@@ -1,14 +1,11 @@
 import React from 'react'
-import './App.css'
 
-const App: React.FC = () => {
+export default function App(): JSX.Element {
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>Welcome to React v18 with Typescript.</h1>
-      <p style={{ textAlign: 'center', margin: 0 }}>React: v18.1.0</p>
-      <p style={{ textAlign: 'center', margin: 0 }}>Typescript: v4.7.3</p>
+      <p className='text-3xl font-bold text-center'>Welcome to React v18 with Typescript.</p>
+      <p className='text-center m-0'>React: v18.1.0</p>
+      <p className='text-center m-0'>Typescript: v4.7.3</p>
     </>
   )
 }
-
-export default App
