@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import AuthO from './components/SocialLogin/Auth0';
 
 const App: React.FC = () => {
-  return (
-    <div>
-      React
-    </div>
-  );
-}
+    return (
+        <div>
+            <AuthO />
+        </div>
+    );
+};
 
 export default App;
