@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveRadar } from '@nivo/radar'
 
-import { RadarCommonProps } from '../../data'
+import { RadarCommonProps } from '../../../data'
 
 // eslint-disable-next-line
 export default function Radar(props: any): JSX.Element {

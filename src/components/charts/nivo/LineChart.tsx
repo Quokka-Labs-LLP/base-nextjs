@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveLine } from '@nivo/line'
 
-import { LineCommonProps } from '../../data'
+import { LineCommonProps } from '../../../data'
 
 // eslint-disable-next-line
 export default function LineChart(props: any): JSX.Element {

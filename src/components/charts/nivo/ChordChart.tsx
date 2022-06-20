@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveChord } from '@nivo/chord'
 
-import { ChordCommonProps } from '../../data'
+import { ChordCommonProps } from '../../../data'
 
 // eslint-disable-next-line
 export default function ChordChart(props: any): JSX.Element {

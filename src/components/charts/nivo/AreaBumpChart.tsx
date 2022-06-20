@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveAreaBump } from '@nivo/bump'
 
-import { BumpCommonProps } from '../../data'
+import { BumpCommonProps } from '../../../data'
 
 export default function AreaBumpChart(): JSX.Element {
   return (
@@ -158,7 +158,7 @@ export default function AreaBumpChart(): JSX.Element {
         margin={{ top: 40, right: 100, bottom: 40, left: 100 }}
         spacing={8}
         colors={{ scheme: 'nivo' }}
-        blendMode='multiply'
+        blendMode="multiply"
         defs={[
           {
             id: 'dots',

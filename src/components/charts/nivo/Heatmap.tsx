@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveHeatMap } from '@nivo/heatmap'
 
-import { HeatMapCommonProps } from '../../data'
+import { HeatMapCommonProps } from '../../../data'
 
 // eslint-disable-next-line
 export default function Heatmap(props: any): JSX.Element {

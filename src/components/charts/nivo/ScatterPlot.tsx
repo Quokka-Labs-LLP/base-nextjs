@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveScatterPlot } from '@nivo/scatterplot'
 
-import { ScatterPlotCommonProps } from '../../data'
+import { ScatterPlotCommonProps } from '../../../data'
 
 // eslint-disable-next-line
 export default function ScatterPlot(props: any): JSX.Element {

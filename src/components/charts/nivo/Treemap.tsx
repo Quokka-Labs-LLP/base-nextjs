@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveTreeMap } from '@nivo/treemap'
 
-import { TreemapCommonProps } from '../../data'
+import { TreemapCommonProps } from '../../../data'
 import { DynamicProps } from './types'
 
 export default function TreeMap(props: DynamicProps): JSX.Element {

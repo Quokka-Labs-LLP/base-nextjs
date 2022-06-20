@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveBullet } from '@nivo/bullet'
 
-import { BulletCommonProps } from '../../data'
+import { BulletCommonProps } from '../../../data'
 
 // eslint-disable-next-line
 export default function BulletChart(props: any): JSX.Element {

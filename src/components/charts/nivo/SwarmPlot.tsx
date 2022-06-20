@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveSwarmPlot } from '@nivo/swarmplot'
 
-import { SwarmPlotCommonProps } from '../../data'
+import { SwarmPlotCommonProps } from '../../../data'
 import { DynamicProps } from './types'
 
 export default function SwarmPlot(props: DynamicProps): JSX.Element {

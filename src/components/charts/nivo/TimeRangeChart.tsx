@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveTimeRange } from '@nivo/calendar'
 
-import { CalendarCommonProps } from '../../data'
+import { CalendarCommonProps } from '../../../data'
 import { DynamicProps } from './types'
 
 export default function TimeRangeChart(props: DynamicProps): JSX.Element {
