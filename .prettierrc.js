@@ -1,7 +1,7 @@
 module.exports = {
   arrowParens: 'avoid',
   endOfLine: 'lf',
-  jsxSingleQuote: false,
+  jsxSingleQuote: true,
   printWidth: 120,
   semi: false,
   singleQuote: true,

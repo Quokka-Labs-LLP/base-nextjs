@@ -12,7 +12,7 @@ const data = [
 
 export default function Chart(): JSX.Element {
   return (
-    <FunnelChart width={1000} height={350}>
+    <FunnelChart width={580} height={400}>
       <Tooltip />
       <Funnel dataKey='value' data={data} isAnimationActive>
         <LabelList position='right' fill='#000' stroke='none' dataKey='name' />

@@ -22,7 +22,7 @@ const data02 = [
 
 export default function Chart(): JSX.Element {
   return (
-    <ScatterChart width={1000} height={350} margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+    <ScatterChart width={580} height={400} margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
       <CartesianGrid strokeDasharray='3 3' />
       <XAxis dataKey='x' name='stature' unit='cm' />
       <YAxis dataKey='y' name='weight' unit='kg' />
@@ -30,9 +30,7 @@ export default function Chart(): JSX.Element {
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
       <Legend />
       <Scatter name='A school' data={data01} fill='#8884d8' />
-      {/* eslint-disable-next-line */}
-      {/* @ts-ignore */}
-      <ScatterChart name='B school' data={data02} fill='#82ca9d' />
+      <Scatter name='B school' data={data02} fill='#82ca9d' />
     </ScatterChart>
   )
 }

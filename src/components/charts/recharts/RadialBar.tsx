@@ -15,8 +15,8 @@ const data = [
 export default function Chart(): JSX.Element {
   return (
     <RadialBarChart
-      width={1000}
-      height={350}
+      width={580}
+      height={400}
       innerRadius='10%'
       outerRadius='80%'
       data={data}

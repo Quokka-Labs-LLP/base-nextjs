@@ -14,7 +14,7 @@ const data = [
 
 export default function Chart(): JSX.Element {
   return (
-    <PieChart width={1000} height={350}>
+    <PieChart width={580} height={400}>
       <Pie data={data} dataKey='uv' nameKey='name' cx='50%' cy='50%' outerRadius={140} fill='#8884d8' label />
       <Tooltip />
     </PieChart>

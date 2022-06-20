@@ -14,7 +14,7 @@ const data = [
 
 export default function Chart(): JSX.Element {
   return (
-    <ComposedChart width={1000} height={350} data={data}>
+    <ComposedChart width={580} height={400} data={data}>
       <XAxis dataKey='name' />
       <YAxis />
       <Tooltip />

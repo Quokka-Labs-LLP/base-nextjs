@@ -23,13 +23,13 @@ function DemoSankeyNode({ x, y, width, height, index, payload, containerWidth }:
   const isOut = x + width + 6 > containerWidth
   return (
     <Layer key={`CustomNode${index}`}>
-      <Rectangle x={x} y={y} width={width} height={height} fill="#5192ca" fillOpacity="1" />
+      <Rectangle x={x} y={y} width={width} height={height} fill='#5192ca' fillOpacity='1' />
       <text
         textAnchor={isOut ? 'end' : 'start'}
         x={isOut ? x - 6 : x + width + 6}
         y={y + height / 2}
-        fontSize="14"
-        stroke="#333"
+        fontSize='14'
+        stroke='#333'
       >
         {payload.name}
       </text>
@@ -37,9 +37,9 @@ function DemoSankeyNode({ x, y, width, height, index, payload, containerWidth }:
         textAnchor={isOut ? 'end' : 'start'}
         x={isOut ? x - 6 : x + width + 6}
         y={y + height / 2 + 13}
-        fontSize="12"
-        stroke="#333"
-        strokeOpacity="0.5"
+        fontSize='12'
+        stroke='#333'
+        strokeOpacity='0.5'
       >
         {payload.value + 'k'}
       </text>
@@ -50,8 +50,8 @@ function DemoSankeyNode({ x, y, width, height, index, payload, containerWidth }:
 export default function Chart(): JSX.Element {
   return (
     <Sankey
-      width={1000}
-      height={350}
+      width={580}
+      height={400}
       margin={{
         left: 200,
         right: 200,
@@ -68,8 +68,8 @@ export default function Chart(): JSX.Element {
     >
       <defs>
         <linearGradient id={'linkGradient'}>
-          <stop offset="0%" stopColor="rgba(0, 136, 254, 0.5)" />
-          <stop offset="100%" stopColor="rgba(0, 197, 159, 0.3)" />
+          <stop offset='0%' stopColor='rgba(0, 136, 254, 0.5)' />
+          <stop offset='100%' stopColor='rgba(0, 197, 159, 0.3)' />
         </linearGradient>
       </defs>
       <Tooltip />

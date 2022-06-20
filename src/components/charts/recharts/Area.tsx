@@ -14,7 +14,7 @@ const data = [
 
 export default function Chart(): JSX.Element {
   return (
-    <AreaChart width={1000} height={350} data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+    <AreaChart width={580} height={400} data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
       <defs>
         <linearGradient id='colorUv' x1='0' y1='0' x2='0' y2='1'>
           <stop offset='5%' stopColor='#8884d8' stopOpacity={0.8} />

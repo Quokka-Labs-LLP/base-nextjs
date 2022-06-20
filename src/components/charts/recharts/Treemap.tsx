@@ -138,5 +138,5 @@ const data = [
 export default function Chart(): JSX.Element {
   // eslint-disable-next-line
   // @ts-ignore
-  return <Treemap width={1000} height={350} data={data} dataKey="size" ratio={4 / 3} stroke="#fff" fill="#8884d8" />
+  return <Treemap width={580} height={400} data={data} dataKey='size' ratio={4 / 3} stroke='#fff' fill='#8884d8' />
 }

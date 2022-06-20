@@ -12,7 +12,7 @@ const data = [
 
 export default function Chart(): JSX.Element {
   return (
-    <LineChart width={1000} height={350} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+    <LineChart width={580} height={400} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
       <Line type='monotone' dataKey='uv' stroke='#8884d8' />
       <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
       <XAxis dataKey='name' />

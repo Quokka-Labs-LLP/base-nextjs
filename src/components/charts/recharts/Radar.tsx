@@ -13,12 +13,12 @@ const data = [
 
 export default function Chart(): JSX.Element {
   return (
-    <RadarChart outerRadius={90} width={1000} height={350} data={data}>
+    <RadarChart outerRadius={90} width={580} height={400} data={data}>
       <Legend />
       <PolarGrid />
-      <PolarAngleAxis dataKey="subject" />
+      <PolarAngleAxis dataKey='subject' />
       <PolarRadiusAxis />
-      <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+      <Radar name='Mike' dataKey='A' stroke='#8884d8' fill='#8884d8' fillOpacity={0.6} />
     </RadarChart>
   )
 }
