@@ -27,6 +27,17 @@ import {
   SankeyChart,
   ScatterChart,
   TreemapChart,
+  BarChartjs,
+  BubbleChartjs,
+  ComposedChartjs,
+  DoughnutChartjs,
+  GroupedBarChartjs,
+  LineChartjs,
+  PieChartjs,
+  PolarAreaChartjs,
+  RadarChartjs,
+  ScatterChartjs,
+  StackedBarChartjs,
 } from './components'
 
 export default function App(): JSX.Element {
@@ -78,6 +89,7 @@ export default function App(): JSX.Element {
           <TreemapChart />
         </div>
       </div>
+
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Nivo Charts</h1>
       <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
         <BarChartExample />
@@ -96,6 +108,58 @@ export default function App(): JSX.Element {
         <SwarmPlotExample />
         <TimeRangeChartExample />
         <TreemapExample />
+      </div>
+
+      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>React Chartjs</h1>
+      <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
+        <div style={{ padding: '10px', width: '580px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart</h1>
+          <BarChartjs type='x' />
+        </div>
+        <div style={{ padding: '10px', width: '580px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart</h1>
+          <BarChartjs type='y' />
+        </div>
+        <div style={{ padding: '10px', width: '580px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bubble Chart</h1>
+          <BubbleChartjs />
+        </div>
+        <div style={{ padding: '10px', width: '580px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Composed Chart</h1>
+          <ComposedChartjs />
+        </div>
+        <div style={{ padding: '10px', width: '580px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Doughnut Chart</h1>
+          <DoughnutChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>GroupedBar Chart</h1>
+          <GroupedBarChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Line Chart</h1>
+          <LineChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Pie Chart</h1>
+          <PieChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>PolarArea Chart</h1>
+          <PolarAreaChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Radar Chart</h1>
+          <RadarChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Scatter Chart</h1>
+          <ScatterChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>StackedBar Chart</h1>
+          <StackedBarChartjs />
+        </div>
       </div>
     </div>
   )

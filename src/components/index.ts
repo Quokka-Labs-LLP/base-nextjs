@@ -26,6 +26,17 @@ export {
   SwarmPlot,
   TimeRangeChart,
   Treemap,
+  BarChartjs,
+  BubbleChartjs,
+  ComposedChartjs,
+  DoughnutChartjs,
+  GroupedBarChartjs,
+  LineChartjs,
+  PieChartjs,
+  PolarAreaChartjs,
+  RadarChartjs,
+  ScatterChartjs,
+  StackedBarChartjs,
 } from './charts'
 
 export { default as BarChartExample } from './BarChartExample'
