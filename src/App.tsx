@@ -1,6 +1,22 @@
 import React from 'react'
 
 import {
+  BarChartExample,
+  BulletChartExample,
+  BumpChartExample,
+  CalendarChartExample,
+  ChordChartExample,
+  CirclePackingExample,
+  FunnelChartExample,
+  HeatMapExample,
+  LineChartExample,
+  NetworkExample,
+  PieChartExample,
+  RadarExample,
+  ScatterPlotExample,
+  SwarmPlotExample,
+  TimeRangeChartExample,
+  TreemapExample,
   AreaChart,
   BarChart,
   ComposedChart,
@@ -12,32 +28,72 @@ import {
   ScatterChart,
   TreemapChart,
 } from './components'
-import './App.css'
 
 export default function App(): JSX.Element {
   return (
-    <div style={{ maxWidth: '1000px', margin: '20px auto' }}>
-      <h1 style={{ textAlign: 'center', margin: '50px', fontWeight: 100 }}>Recharts Example with CRA and TypeScript</h1>
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>AreaChart</h1>
-      <AreaChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>BarChart</h1>
-      <BarChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>ComposedChart</h1>
-      <ComposedChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>LineChart</h1>
-      <LineChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>PieChart</h1>
-      <PieChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>RadarChart</h1>
-      <RadarChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>RadialBarChart</h1>
-      <RadialBarChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>SankeyChart</h1>
-      <SankeyChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>ScatterChart</h1>
-      <ScatterChart />
-      <h1 style={{ textAlign: 'center', marginTop: '50px', fontWeight: 400 }}>TreemapChart</h1>
-      <TreemapChart />
+    <div style={{ maxWidth: '1280px', margin: '10px auto' }}>
+      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Welcome to React v17 with Typescript.</h1>
+      <p style={{ textAlign: 'center', margin: 0 }}>React: v17.0.2</p>
+      <p style={{ textAlign: 'center', margin: 0 }}>Typescript: v4.3.5</p>
+      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Nivo Charts</h1>
+      <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <AreaChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <BarChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <ComposedChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <LineChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <PieChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <RadarChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <RadialBarChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <SankeyChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <ScatterChart />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Stacked Bar Chart</h1>
+          <TreemapChart />
+        </div>
+        <BarChartExample />
+        <BulletChartExample />
+        <BumpChartExample />
+        <CalendarChartExample />
+        <ChordChartExample />
+        <CirclePackingExample />
+        <FunnelChartExample />
+        <HeatMapExample />
+        <LineChartExample />
+        <NetworkExample />
+        <PieChartExample />
+        <RadarExample />
+        <ScatterPlotExample />
+        <SwarmPlotExample />
+        <TimeRangeChartExample />
+        <TreemapExample />
+      </div>
     </div>
   )
 }
