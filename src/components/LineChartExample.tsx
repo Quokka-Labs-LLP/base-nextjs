@@ -45,7 +45,7 @@ export default function LineChartExample(): JSX.Element {
         <LineChart curve='stepAfter' />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Line Chart with StepAfter Curve</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Line Chart with Gradient</h1>
         <LineChart
           enableArea={true}
           yScale={{

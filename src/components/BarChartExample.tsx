@@ -205,7 +205,7 @@ export default function BarChartExample(): JSX.Element {
         />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Custom Tooltip</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Custom Tick</h1>
         <BarChart
           axisLeft={null}
           axisBottom={{
@@ -214,7 +214,7 @@ export default function BarChartExample(): JSX.Element {
         />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Custom Tooltip</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Legends</h1>
         <BarChart
           legends={[
             {
@@ -230,7 +230,7 @@ export default function BarChartExample(): JSX.Element {
         />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Custom Tooltip</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Legend</h1>
         <BarChart
           // eslint-disable-next-line
           legendLabel={(datum: any) => `${datum.id} (${datum.value})`}
@@ -248,7 +248,7 @@ export default function BarChartExample(): JSX.Element {
         />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Custom Tooltip</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bar Chart with Annotation</h1>
         <BarChart
           annotations={[
             {

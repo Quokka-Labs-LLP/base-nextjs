@@ -95,11 +95,11 @@ export default function BulletChartExample(): JSX.Element {
   return (
     <>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bump Chart</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bullet Chart</h1>
         <BulletChart />
       </div>
-      <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Bump Chart</h1>
+      {/* <div style={{ padding: '10px' }}>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Vertical Bullet Chart</h1>
         <BulletChart
           layout='vertical'
           height={500}
@@ -110,17 +110,17 @@ export default function BulletChartExample(): JSX.Element {
           titleOffsetY={-15}
           titleRotation={-90}
         />
-      </div>
+      </div> */}
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bump Chart with Custom Range</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bullet Chart with Custom Range</h1>
         <BulletChart rangeComponent={CustomRange} />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bump Chart with Custom Measure</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bullet Chart with Custom Measure</h1>
         <BulletChart measureComponent={CustomMeasure} />
       </div>
       <div style={{ padding: '10px' }}>
-        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bump Chart with Custom Marker</h1>
+        <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Bullet Chart with Custom Marker</h1>
         <BulletChart markerComponent={CustomMarker} />
       </div>
     </>
