@@ -33,21 +33,16 @@ export default function SlateEditor(props: SlateEditableProps): JSX.Element {
   delete editableProps.toolbar
 
   useEffect(() => {
-    // eslint-disable-next-line
-    // @ts-ignore
-    window['editor'] = editor
     props?.getEditor?.(editor)
   }, [])
 
   return (
-    <Slate editor={editor} value={initialValue || [
+    <Slate editor={editor} value={(initialValue || [
       {
-        // eslint-disable-next-line
-        // @ts-ignore
         type: 'paragraph',
         children: [{ text: 'Write a note...' }],
       },
-    ]}>
+    ]) as Descendant[]}>
       {toolbar}
       <Editable
         {...editableProps}
