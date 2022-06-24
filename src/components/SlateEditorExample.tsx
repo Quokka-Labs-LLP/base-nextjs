@@ -1,13 +1,10 @@
 import React from 'react'
-import {
-  Editor,
-  Transforms,
-  Text,
-} from 'slate'
+import { Editor, Transforms, Text } from 'slate'
+import { ReactEditor } from 'slate-react'
 
 import { SlateEditor } from './index'
 
-function Card({children, label,description}: {children:JSX.Element, label:string, description?:string}) {
+function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
   return (
     <div style={{ padding: '30px', boxShadow: '0 2px 4px rgb(0 0 0 / 50%)', borderRadius: '8px' }}>
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>{label}</h1>
@@ -17,6 +14,7 @@ function Card({children, label,description}: {children:JSX.Element, label:string
   )
 }
 
+// eslint-disable-next-line
 const CodeElement = (props: any) => {
   return (
     <pre {...props.attributes}>
@@ -25,16 +23,15 @@ const CodeElement = (props: any) => {
   )
 }
 
+// eslint-disable-next-line
 const DefaultElement = (props: any) => {
   return <p {...props.attributes}>{props.children}</p>
 }
 
+// eslint-disable-next-line
 const Leaf = (props: any) => {
   return (
-    <span
-      {...props.attributes}
-      style={{ fontWeight: props.leaf.bold ? 'bold' : 'normal' }}
-    >
+    <span {...props.attributes} style={{ fontWeight: props.leaf.bold ? 'bold' : 'normal' }}>
       {props.children}
     </span>
   )
@@ -42,6 +39,7 @@ const Leaf = (props: any) => {
 
 export default function SlateEditorExample(): JSX.Element {
   const [editor, setEditor] = React.useState()
+  // eslint-disable-next-line
   const renderElement = React.useCallback((props: any) => {
     switch (props.element.type) {
       case 'code':
@@ -52,51 +50,51 @@ export default function SlateEditorExample(): JSX.Element {
   }, [])
 
   // Define a leaf rendering function that is memoized with `useCallback`.
-  const renderLeaf = React.useCallback(props => {
+  const renderLeaf = React.useCallback((props) => {
     return <Leaf {...props} />
   }, [])
 
   const CustomEditor = {
-    isBoldMarkActive(editor: any) {
+    isBoldMarkActive(editor: ReactEditor) {
       const [match] = Editor.nodes(editor, {
         // eslint-disable-next-line
-            // @ts-ignore
-        match: n => n.bold === true,
+        // @ts-ignore
+        match: (n) => n.bold === true,
         universal: true,
       })
-  
+
       return !!match
     },
-  
-    isCodeBlockActive(editor: any) {
+
+    isCodeBlockActive(editor: ReactEditor) {
       const [match] = Editor.nodes(editor, {
         // eslint-disable-next-line
-            // @ts-ignore
-        match: n => n.type === 'code',
+        // @ts-ignore
+        match: (n) => n.type === 'code',
       })
-  
+
       return !!match
     },
-  
-    toggleBoldMark(editor: any) {
+
+    toggleBoldMark(editor: ReactEditor) {
       const isActive = CustomEditor.isBoldMarkActive(editor)
       Transforms.setNodes(
         editor,
         // eslint-disable-next-line
-            // @ts-ignore
+        // @ts-ignore
         { bold: isActive ? null : true },
-        { match: n => Text.isText(n), split: true }
+        { match: (n) => Text.isText(n), split: true },
       )
     },
-  
-    toggleCodeBlock(editor: any) {
+
+    toggleCodeBlock(editor: ReactEditor) {
       const isActive = CustomEditor.isCodeBlockActive(editor)
       Transforms.setNodes(
         editor,
         // eslint-disable-next-line
-            // @ts-ignore
+        // @ts-ignore
         { type: isActive ? null : 'code' },
-        { match: n => Editor.isBlock(editor, n) }
+        { match: (n) => Editor.isBlock(editor, n) },
       )
     },
   }
@@ -118,11 +116,11 @@ export default function SlateEditorExample(): JSX.Element {
           ]}
         />
       </Card>
-      <Card label='Adding event listener' description='Type & and see the magic'>
+      <Card label='Adding event listener' description='Type `&` sign and see the magic'>
         <SlateEditor
           // eslint-disable-next-line
           // @ts-ignore
-          onKeyDown={(event: Event, editor: any) => {
+          onKeyDown={(event: Event, editor: ReactEditor) => {
             // eslint-disable-next-line
             // @ts-ignore
             if (event.key === '&') {
@@ -140,7 +138,7 @@ export default function SlateEditorExample(): JSX.Element {
           renderElement={renderElement}
           // eslint-disable-next-line
           // @ts-ignore
-          onKeyDown={(event: Event, editor: any) => {
+          onKeyDown={(event: Event, editor: ReactEditor) => {
             // eslint-disable-next-line
             // @ts-ignore
             if (event.key === '`' && event.ctrlKey) {
@@ -148,14 +146,14 @@ export default function SlateEditorExample(): JSX.Element {
               const [match] = Editor.nodes(editor, {
                 // eslint-disable-next-line
                 // @ts-ignore
-                match: n => n.type === 'code',
+                match: (n) => n.type === 'code',
               })
               Transforms.setNodes(
                 editor,
                 // eslint-disable-next-line
                 // @ts-ignore
                 { type: match ? 'paragraph' : 'code' },
-                { match: n => Editor.isBlock(editor, n) }
+                { match: (n) => Editor.isBlock(editor, n) },
               )
             }
           }}
@@ -167,23 +165,23 @@ export default function SlateEditorExample(): JSX.Element {
           renderLeaf={renderLeaf}
           // eslint-disable-next-line
           // @ts-ignore
-          onKeyDown={(event: Event, editor: any) => {
+          onKeyDown={(event: Event, editor: ReactEditor) => {
             // eslint-disable-next-line
             // @ts-ignore
-            switch(event.key) {
+            switch (event.key) {
               case '`': {
                 event.preventDefault()
                 const [match] = Editor.nodes(editor, {
                   // eslint-disable-next-line
                   // @ts-ignore
-                  match: n => n.type === 'code',
+                  match: (n) => n.type === 'code',
                 })
                 Transforms.setNodes(
                   editor,
                   // eslint-disable-next-line
                   // @ts-ignore
                   { type: match ? 'paragraph' : 'code' },
-                  { match: n => Editor.isBlock(editor, n) }
+                  { match: (n) => Editor.isBlock(editor, n) },
                 )
                 break
               }
@@ -199,7 +197,7 @@ export default function SlateEditorExample(): JSX.Element {
                   // selection is overlapping only part of it.
                   // eslint-disable-next-line
                   // @ts-ignore
-                  { match: n => Text.isText(n), split: true }
+                  { match: (n) => Text.isText(n), split: true },
                 )
                 break
               }
@@ -210,16 +208,20 @@ export default function SlateEditorExample(): JSX.Element {
       <Card label='Executing Commands'>
         <>
           <button
-            onMouseDown={event => {
+            onMouseDown={(event) => {
               event.preventDefault()
+              // eslint-disable-next-line
+              // @ts-ignore
               CustomEditor.toggleBoldMark(editor)
             }}
           >
             Bold
           </button>
           <button
-            onMouseDown={event => {
+            onMouseDown={(event) => {
               event.preventDefault()
+              // eslint-disable-next-line
+              // @ts-ignore
               CustomEditor.toggleCodeBlock(editor)
             }}
           >
@@ -228,26 +230,27 @@ export default function SlateEditorExample(): JSX.Element {
           <SlateEditor
             renderElement={renderElement}
             renderLeaf={renderLeaf}
+            // eslint-disable-next-line
             getEditor={(e: any) => setEditor(e)}
             // eslint-disable-next-line
             // @ts-ignore
-            onKeyDown={(event: Event, editor: any) => {
+            onKeyDown={(event: Event, editor: ReactEditor) => {
               // eslint-disable-next-line
               // @ts-ignore
-              switch(event.key) {
+              switch (event.key) {
                 case '`': {
                   event.preventDefault()
                   const [match] = Editor.nodes(editor, {
                     // eslint-disable-next-line
                     // @ts-ignore
-                    match: n => n.type === 'code',
+                    match: (n) => n.type === 'code',
                   })
                   Transforms.setNodes(
                     editor,
                     // eslint-disable-next-line
                     // @ts-ignore
                     { type: match ? 'paragraph' : 'code' },
-                    { match: n => Editor.isBlock(editor, n) }
+                    { match: (n) => Editor.isBlock(editor, n) },
                   )
                   break
                 }
@@ -263,7 +266,7 @@ export default function SlateEditorExample(): JSX.Element {
                     // selection is overlapping only part of it.
                     // eslint-disable-next-line
                     // @ts-ignore
-                    { match: n => Text.isText(n), split: true }
+                    { match: (n) => Text.isText(n), split: true },
                   )
                   break
                 }

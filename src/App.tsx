@@ -1,6 +1,13 @@
 import React from 'react'
 
-import { SlateEditorExample, RichTextExample } from './components'
+import {
+  CheckListsExample,
+  CodeHighlightingExample,
+  ImageExample,
+  RichTextExample,
+  SearchHighlightingExample,
+  SlateEditorExample,
+} from './components'
 
 export default function App(): JSX.Element {
   return (
@@ -13,6 +20,10 @@ export default function App(): JSX.Element {
       <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
         <SlateEditorExample />
         <RichTextExample />
+        <CheckListsExample />
+        <SearchHighlightingExample />
+        <CodeHighlightingExample />
+        <ImageExample />
       </div>
     </div>
   )

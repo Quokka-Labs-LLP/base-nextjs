@@ -1,125 +1,13 @@
-import React, { useCallback, Ref, PropsWithChildren } from 'react'
+import React, { useCallback } from 'react'
 import isHotkey from 'is-hotkey'
 import { ReactEditor, useSlate } from 'slate-react'
-import {
-  Editor,
-  Transforms,
-  Descendant,
-  Element as SlateElement,
-} from 'slate'
-import { cx, css } from '@emotion/css'
+import { Editor, Transforms, Descendant, Element as SlateElement } from 'slate'
 
 import { SlateEditor } from './index'
+import Button from './Button'
+import Icon from './Icon'
+import Toolbar from './Toolbar'
 
-interface BaseProps {
-  className: string
-  [key: string]: unknown
-}
-
-const Button = React.forwardRef(
-  (
-    {
-      className,
-      active,
-      reversed,
-      ...props
-    }: PropsWithChildren<
-      {
-        active: boolean
-        reversed: boolean
-      } & BaseProps
-    >,
-    ref: Ref<HTMLDivElement> | undefined
-  ) => (
-    <span
-      {...props}
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          cursor: pointer;
-          color: ${reversed
-            ? active
-              ? 'white'
-              : '#aaa'
-            : active
-            ? 'black'
-            : '#ccc'};
-        `
-      )}
-    />
-  )
-)
-Button.displayName = "Button"
-
-const Icon = React.forwardRef(
-  (
-    { className, ...props }: PropsWithChildren<BaseProps>,
-    ref: Ref<HTMLDivElement> | undefined
-  ) => (
-    <span
-      {...props}
-      ref={ref}
-      className={cx(
-        'material-icons',
-        className,
-        css`
-          font-size: 18px;
-          vertical-align: text-bottom;
-        `
-      )}
-    />
-  )
-)
-Icon.displayName = "Icon"
-
-const Menu = React.forwardRef(
-  (
-    { className, ...props }: PropsWithChildren<BaseProps>,
-    ref: Ref<HTMLDivElement> | undefined
-  ) => (
-    <div
-      {...props}
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          & > * {
-            display: inline-block;
-          }
-          & > * + * {
-            margin-left: 15px;
-          }
-        `
-      )}
-    />
-  )
-)
-Menu.displayName = "Menu"
-
-
-const Toolbar = React.forwardRef(
-  (
-    { className, ...props }: PropsWithChildren<BaseProps>,
-    ref: Ref<HTMLDivElement> | undefined
-  ) => (
-    <Menu
-      {...props}
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          position: relative;
-          padding: 1px 18px 17px;
-          margin: 0 -20px;
-          border-bottom: 2px solid #eee;
-          margin-bottom: 20px;
-        `
-      )}
-    />
-  )
-)
-Toolbar.displayName = "Toolbar"
 const HOTKEYS = {
   'mod+b': 'bold',
   'mod+i': 'italic',
@@ -130,7 +18,7 @@ const HOTKEYS = {
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 const TEXT_ALIGN_TYPES = ['left', 'center', 'right', 'justify']
 
-function Card({children, label,description}: {children:JSX.Element, label:string, description?:string}) {
+function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
   return (
     <div style={{ padding: '30px', boxShadow: '0 2px 4px rgb(0 0 0 / 50%)', borderRadius: '8px' }}>
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>{label}</h1>
@@ -142,8 +30,8 @@ function Card({children, label,description}: {children:JSX.Element, label:string
 
 export default function RichTextExample(): JSX.Element {
   const [editor, setEditor] = React.useState()
-  const renderElement = useCallback(props => <Element {...props} />, [])
-  const renderLeaf = useCallback(props => <Leaf {...props} />, [])
+  const renderElement = useCallback((props) => <Element {...props} />, [])
+  const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
   // const editor = useMemo(() => withHistory(withReact(createEditor() as ReactEditor)), [])
 
   return (
@@ -151,54 +39,56 @@ export default function RichTextExample(): JSX.Element {
       <SlateEditor
         renderElement={renderElement}
         renderLeaf={renderLeaf}
-        placeholder="Enter some rich text…"
+        placeholder='Enter some rich text…'
         spellCheck
         autoFocus
         initialValue={initialValue}
+        // eslint-disable-next-line
         getEditor={(e: any) => setEditor(e)}
-        onKeyDown={event => {
+        onKeyDown={(event) => {
           for (const hotkey in HOTKEYS) {
-            if (isHotkey(hotkey, event as any)) {
+            if (isHotkey(hotkey, event as React.KeyboardEvent<HTMLDivElement>)) {
               event.preventDefault()
               // eslint-disable-next-line
               // @ts-ignore
               const mark = HOTKEYS[hotkey]
+              // eslint-disable-next-line
+              // @ts-ignore
               toggleMark(editor, mark)
             }
           }
         }}
-        toolbar={<Toolbar>
-          <MarkButton format="bold" icon="format_bold" />
-          <MarkButton format="italic" icon="format_italic" />
-          <MarkButton format="underline" icon="format_underlined" />
-          <MarkButton format="code" icon="code" />
-          <BlockButton format="heading-one" icon="looks_one" />
-          <BlockButton format="heading-two" icon="looks_two" />
-          <BlockButton format="block-quote" icon="format_quote" />
-          <BlockButton format="numbered-list" icon="format_list_numbered" />
-          <BlockButton format="bulleted-list" icon="format_list_bulleted" />
-          <BlockButton format="left" icon="format_align_left" />
-          <BlockButton format="center" icon="format_align_center" />
-          <BlockButton format="right" icon="format_align_right" />
-          <BlockButton format="justify" icon="format_align_justify" />
-        </Toolbar>}
+        toolbar={
+          <Toolbar>
+            <MarkButton format='bold' icon='format_bold' />
+            <MarkButton format='italic' icon='format_italic' />
+            <MarkButton format='underline' icon='format_underlined' />
+            <MarkButton format='code' icon='code' />
+            <BlockButton format='heading-one' icon='looks_one' />
+            <BlockButton format='heading-two' icon='looks_two' />
+            <BlockButton format='block-quote' icon='format_quote' />
+            <BlockButton format='numbered-list' icon='format_list_numbered' />
+            <BlockButton format='bulleted-list' icon='format_list_bulleted' />
+            <BlockButton format='left' icon='format_align_left' />
+            <BlockButton format='center' icon='format_align_center' />
+            <BlockButton format='right' icon='format_align_right' />
+            <BlockButton format='justify' icon='format_align_justify' />
+          </Toolbar>
+        }
       />
     </Card>
   )
 }
 
 const toggleBlock = (editor: ReactEditor, format: string) => {
-  const isActive = isBlockActive(
-    editor,
-    format,
-    TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type'
-  )
+  const isActive = isBlockActive(editor, format, TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type')
   const isList = LIST_TYPES.includes(format)
 
   Transforms.unwrapNodes(editor, {
-    match: n =>
+    match: (n) =>
       !Editor.isEditor(n) &&
       SlateElement.isElement(n) &&
+      // eslint-disable-next-line
       LIST_TYPES.includes((n as any).type) &&
       !TEXT_ALIGN_TYPES.includes(format),
     split: true,
@@ -207,13 +97,13 @@ const toggleBlock = (editor: ReactEditor, format: string) => {
   if (TEXT_ALIGN_TYPES.includes(format)) {
     newProperties = {
       // eslint-disable-next-line
-            // @ts-ignore
+      // @ts-ignore
       align: isActive ? undefined : format,
     }
   } else {
     newProperties = {
       // eslint-disable-next-line
-            // @ts-ignore
+      // @ts-ignore
       type: isActive ? 'paragraph' : isList ? 'list-item' : format,
     }
   }
@@ -242,13 +132,13 @@ const isBlockActive = (editor: ReactEditor, format: string, blockType = 'type') 
   const [match] = Array.from(
     Editor.nodes(editor, {
       at: Editor.unhangRange(editor, selection),
-      match: n =>
+      match: (n) =>
         !Editor.isEditor(n) &&
         SlateElement.isElement(n) &&
         // eslint-disable-next-line
         // @ts-ignore
         n[blockType] === format,
-    })
+    }),
   )
 
   return !!match
@@ -261,7 +151,16 @@ const isMarkActive = (editor: ReactEditor, format: string) => {
   return marks ? marks[format] === true : false
 }
 
-const Element = ({ attributes, children, element }: { attributes: any, children: any, element: any }) => {
+const Element = ({
+  attributes,
+  children,
+  element,
+}: {
+  attributes: JSX.ElementAttributesProperty
+  children: JSX.Element
+  // eslint-disable-next-line
+  element: any
+}) => {
   const style = { textAlign: element.align }
   switch (element.type) {
     case 'block-quote':
@@ -309,7 +208,23 @@ const Element = ({ attributes, children, element }: { attributes: any, children:
   }
 }
 
-const Leaf = ({ attributes, children, leaf }:{ attributes: any, children: any, leaf: any }) => {
+export interface Leaf {
+  bold?: boolean
+  code?: boolean
+  italic?: boolean
+  underline?: boolean
+  text?: string
+}
+
+const Leaf = ({
+  attributes,
+  children,
+  leaf,
+}: {
+  attributes: JSX.ElementAttributesProperty
+  children: JSX.Element
+  leaf: Leaf
+}) => {
   if (leaf.bold) {
     children = <strong>{children}</strong>
   }
@@ -329,16 +244,12 @@ const Leaf = ({ attributes, children, leaf }:{ attributes: any, children: any, l
   return <span {...attributes}>{children}</span>
 }
 
-const BlockButton = ({ format, icon }: { format: any, icon: any }) => {
-  const editor = useSlate()
+const BlockButton = ({ format, icon }: { format: string; icon: string }) => {
+  const editor = useSlate() as ReactEditor
   return (
     <Button
-      active={isBlockActive(
-        editor,
-        format,
-        TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type'
-      )}
-      onMouseDown={(event: any) => {
+      active={isBlockActive(editor, format, TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type')}
+      onMouseDown={(event: Event) => {
         event.preventDefault()
         toggleBlock(editor, format)
       }}
@@ -348,12 +259,12 @@ const BlockButton = ({ format, icon }: { format: any, icon: any }) => {
   )
 }
 
-const MarkButton = ({ format, icon }: { format: any, icon: any }) => {
-  const editor = useSlate()
+const MarkButton = ({ format, icon }: { format: string; icon: string }) => {
+  const editor = useSlate() as ReactEditor
   return (
     <Button
       active={isMarkActive(editor, format)}
-      onMouseDown={(event: any) => {
+      onMouseDown={(event: Event) => {
         event.preventDefault()
         toggleMark(editor, format)
       }}
@@ -369,15 +280,15 @@ const initialValue: Descendant[] = [
     children: [
       { text: 'This is editable ' },
       // eslint-disable-next-line
-  // @ts-ignore
+      // @ts-ignore
       { text: 'rich', bold: true },
       { text: ' text, ' },
       // eslint-disable-next-line
-  // @ts-ignore
+      // @ts-ignore
       { text: 'much', italic: true },
       { text: ' better than a ' },
       // eslint-disable-next-line
-  // @ts-ignore
+      // @ts-ignore
       { text: '<textarea>', code: true },
       { text: '!' },
     ],
@@ -386,27 +297,25 @@ const initialValue: Descendant[] = [
     type: 'paragraph',
     children: [
       {
-        text:
-          "Since it's rich text, you can do things like turn a selection of text ",
+        text: "Since it's rich text, you can do things like turn a selection of text ",
       },
       // eslint-disable-next-line
-  // @ts-ignore
+      // @ts-ignore
       { text: 'bold', bold: true },
       {
-        text:
-          ', or add a semantically rendered block quote in the middle of the page, like this:',
+        text: ', or add a semantically rendered block quote in the middle of the page, like this:',
       },
     ],
   },
   {
     // eslint-disable-next-line
-  // @ts-ignore
+    // @ts-ignore
     type: 'block-quote',
     children: [{ text: 'A wise quote.' }],
   },
   {
     // eslint-disable-next-line
-  // @ts-ignore
+    // @ts-ignore
     type: 'paragraph',
     align: 'center',
     children: [{ text: 'Try it out for yourself!' }],

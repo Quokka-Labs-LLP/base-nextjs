@@ -1,34 +1,14 @@
 import React, { useEffect, useMemo } from 'react'
-import { BaseRange, createEditor, Descendant, NodeEntry } from 'slate'
-import { Editable, ReactEditor, RenderElementProps, RenderLeafProps, RenderPlaceholderProps, Slate, withReact } from 'slate-react'
-import { DOMRange } from 'slate-react/dist/utils/dom'
+import { createEditor, Descendant } from 'slate'
+import { Editable, ReactEditor, Slate, withReact } from 'slate-react'
 
-export declare type SlateEditableProps = {
-  decorate?: (entry: NodeEntry) => BaseRange[]
-  onDOMBeforeInput?: (event: InputEvent) => void
-  placeholder?: string
-  readOnly?: boolean
-  role?: string
-  style?: React.CSSProperties
-  renderElement?: (props: RenderElementProps) => JSX.Element
-  renderLeaf?: (props: RenderLeafProps) => JSX.Element
-  renderPlaceholder?: (props: RenderPlaceholderProps) => JSX.Element
-  scrollSelectionIntoView?: (editor: ReactEditor, domRange: DOMRange) => void
-  as?: React.ElementType
-  initialValue?: Descendant[]
-  toolbar?: JSX.Element
-  getEditor?: (T: ReactEditor) => void
-} & React.TextareaHTMLAttributes<HTMLDivElement>
-
-export declare type SlateProps = {
-  initialValue?: Descendant[]
-}
+import { SlateEditableProps } from './types'
 
 export default function SlateEditor(props: SlateEditableProps): JSX.Element {
-  const editor = useMemo(() => withReact(createEditor() as ReactEditor), [])
+  const editor = props.editor || useMemo(() => withReact(createEditor() as ReactEditor), [])
 
   const { initialValue, toolbar } = props
-  const editableProps = {...props}
+  const editableProps = { ...props }
   delete editableProps.initialValue
   delete editableProps.toolbar
 
@@ -37,13 +17,19 @@ export default function SlateEditor(props: SlateEditableProps): JSX.Element {
   }, [])
 
   return (
-    <Slate editor={editor} value={(initialValue || [
-      {
-        type: 'paragraph',
-        children: [{ text: 'Write a note...' }],
-      },
-    ]) as Descendant[]}>
+    <Slate
+      editor={editor}
+      value={
+        (initialValue || [
+          {
+            type: 'paragraph',
+            children: [{ text: 'Write a note...' }],
+          },
+        ]) as Descendant[]
+      }
+    >
       {toolbar}
+      {props.children}
       <Editable
         {...editableProps}
         // eslint-disable-next-line
