@@ -9,28 +9,9 @@ import { Text, createEditor, Descendant } from 'slate'
 import { withHistory } from 'slate-history'
 import { css } from '@emotion/css'
 
-import { SlateEditor } from './index'
+import Card from '../Card'
+import { SlateEditor } from '../index'
 import { LeafProp } from './types'
-
-function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
-  const commonCSS = css`
-    text-align: center;
-    font-weight: 400;
-  `
-  const box = css`
-    padding: 30px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
-    border-radius: 8px;
-  `
-
-  return (
-    <div className={box}>
-      <h1 className={commonCSS}>{label}</h1>
-      <p className={commonCSS}>{description}</p>
-      {children}
-    </div>
-  )
-}
 
 export default function CodeHighlightingExample(): JSX.Element {
   const [language, setLanguage] = useState('js')

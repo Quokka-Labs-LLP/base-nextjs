@@ -4,7 +4,8 @@ import { Text, Descendant, createEditor } from 'slate'
 import { css } from '@emotion/css'
 import { withHistory } from 'slate-history'
 
-import { SlateEditor } from './index'
+import Card from '../Card'
+import { SlateEditor } from '../index'
 import Icon from './Icon'
 import Toolbar from './Toolbar'
 import { LeafProp } from './types'
@@ -25,26 +26,6 @@ const initialValue: Descendant[] = [
     children: [{ text: 'Try it out for yourself by typing in the search box above!' }],
   } as Descendant,
 ]
-
-function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
-  const commonCSS = css`
-    text-align: center;
-    font-weight: 400;
-  `
-  const box = css`
-    padding: 30px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
-    border-radius: 8px;
-  `
-
-  return (
-    <div className={box}>
-      <h1 className={commonCSS}>{label}</h1>
-      <p className={commonCSS}>{description}</p>
-      {children}
-    </div>
-  )
-}
 
 const Leaf = ({
   attributes,

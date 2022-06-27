@@ -2,17 +2,8 @@ import React from 'react'
 import { Editor, Transforms, Text } from 'slate'
 import { ReactEditor } from 'slate-react'
 
-import { SlateEditor } from './index'
-
-function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
-  return (
-    <div style={{ padding: '30px', boxShadow: '0 2px 4px rgb(0 0 0 / 50%)', borderRadius: '8px' }}>
-      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>{label}</h1>
-      <p style={{ textAlign: 'center', fontWeight: 400 }}>{description}</p>
-      {children}
-    </div>
-  )
-}
+import { SlateEditor } from '../index'
+import Card from '../Card'
 
 // eslint-disable-next-line
 const CodeElement = (props: any) => {

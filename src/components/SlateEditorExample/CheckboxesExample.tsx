@@ -4,7 +4,8 @@ import { Editor, Transforms, Range, Point, createEditor, Descendant, Element as 
 import { css } from '@emotion/css'
 import { withHistory } from 'slate-history'
 
-import { SlateEditor } from './index'
+import Card from '../Card'
+import { SlateEditor } from '../index'
 
 const initialValue: Descendant[] = [
   {
@@ -50,16 +51,6 @@ const initialValue: Descendant[] = [
     children: [{ text: 'Try it out for yourself!' }],
   },
 ] as Descendant[]
-
-function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
-  return (
-    <div style={{ padding: '30px', boxShadow: '0 2px 4px rgb(0 0 0 / 50%)', borderRadius: '8px' }}>
-      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>{label}</h1>
-      <p style={{ textAlign: 'center', fontWeight: 400 }}>{description}</p>
-      {children}
-    </div>
-  )
-}
 
 export default function CheckListsExample(): JSX.Element {
   const renderElement = useCallback((props) => <Element {...props} />, [])

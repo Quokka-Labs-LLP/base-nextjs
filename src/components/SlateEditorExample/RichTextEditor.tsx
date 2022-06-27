@@ -3,7 +3,8 @@ import isHotkey from 'is-hotkey'
 import { ReactEditor, useSlate } from 'slate-react'
 import { Editor, Transforms, Descendant, Element as SlateElement } from 'slate'
 
-import { SlateEditor } from './index'
+import Card from '../Card'
+import { SlateEditor } from '../index'
 import Button from './Button'
 import Icon from './Icon'
 import Toolbar from './Toolbar'
@@ -17,16 +18,6 @@ const HOTKEYS = {
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 const TEXT_ALIGN_TYPES = ['left', 'center', 'right', 'justify']
-
-function Card({ children, label, description }: { children: JSX.Element; label: string; description?: string }) {
-  return (
-    <div style={{ padding: '30px', boxShadow: '0 2px 4px rgb(0 0 0 / 50%)', borderRadius: '8px' }}>
-      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>{label}</h1>
-      <p style={{ textAlign: 'center', fontWeight: 400 }}>{description}</p>
-      {children}
-    </div>
-  )
-}
 
 export default function RichTextExample(): JSX.Element {
   const [editor, setEditor] = React.useState()
