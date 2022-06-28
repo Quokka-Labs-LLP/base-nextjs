@@ -215,11 +215,14 @@ export interface DraftEditorProps {
   usePluginEditor?: boolean
   // eslint-disable-next-line
   pluginProps?: {
-    plugins?: (EditorPlugin & {
-      MentionSuggestions: React.ComponentType<MentionSuggestionsPubProps>
-    })[] | EmojiPlugin[]
+    plugins?:
+      | (EditorPlugin & {
+          MentionSuggestions: React.ComponentType<MentionSuggestionsPubProps>
+        })[]
+      | EmojiPlugin[]
+      | EditorPlugin[]
     ref?: RefObject<PluginEditor>
-    editorKey: string
+    editorKey?: string
   }
   // eslint-disable-next-line
   ref?: (element: any) => RefObject<PluginEditor>
@@ -256,7 +259,12 @@ export default function DraftEditor(props: DraftEditorProps | Readonly<DraftEdit
       {usePluginEditor ? (
         // eslint-disable-next-line
         // @ts-ignore
-        <PluginEditor editorState={editorState} onChange={props?.onChange || onChange} {...properties} {...pluginProps} />
+        <PluginEditor
+          editorState={editorState}
+          onChange={props?.onChange || onChange}
+          {...properties}
+          {...pluginProps}
+        />
       ) : (
         // eslint-disable-next-line
         // @ts-ignore

@@ -1,4 +1,5 @@
 export { default as SlateEditor } from './text-editor/Slate'
+export { default as DraftEditor } from './text-editor/DraftEditor'
 
 export { default as SlateEditorExample } from './SlateEditorExample/SlateEditorExample'
 export { default as RichTextExample } from './SlateEditorExample/RichTextEditor'
