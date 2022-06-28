@@ -7,6 +7,13 @@ import {
   RichTextExample,
   SearchHighlightingExample,
   SlateEditorExample,
+  SimpleDraftEditor,
+  SomeControlsEditor,
+  SimpleMentionEditor,
+  EmojiExample,
+  DraftImageExample,
+  SimpleVideoEditor,
+  SimpleHashtagEditor,
 } from './components'
 
 export default function App(): JSX.Element {
@@ -24,6 +31,13 @@ export default function App(): JSX.Element {
         <SearchHighlightingExample />
         <CodeHighlightingExample />
         <ImageExample />
+        <SimpleDraftEditor />
+        <SomeControlsEditor />
+        <SimpleMentionEditor />
+        <EmojiExample />
+        <DraftImageExample />
+        <SimpleVideoEditor />
+        <SimpleHashtagEditor />
       </div>
     </div>
   )

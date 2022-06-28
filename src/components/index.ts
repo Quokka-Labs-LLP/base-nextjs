@@ -7,3 +7,11 @@ export { default as CheckListsExample } from './SlateEditorExample/CheckboxesExa
 export { default as CodeHighlightingExample } from './SlateEditorExample/CodeHighlightExample'
 export { default as ImageExample } from './SlateEditorExample/ImageExample'
 export { default as SearchHighlightingExample } from './SlateEditorExample/SearchHighlightingExample'
+
+export { default as SimpleDraftEditor } from './DraftEditorExample/SimpleEditor'
+export { default as SimpleMentionEditor } from './DraftEditorExample/MentionExample'
+export { default as SomeControlsEditor } from './DraftEditorExample/SomeControls'
+export { default as EmojiExample } from './DraftEditorExample/EmojiExample'
+export { default as DraftImageExample } from './DraftEditorExample/ImageExample'
+export { default as SimpleVideoEditor } from './DraftEditorExample/VideoExample'
+export { default as SimpleHashtagEditor } from './DraftEditorExample/HashtagExample'
