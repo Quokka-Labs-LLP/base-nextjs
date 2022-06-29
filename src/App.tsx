@@ -1,4 +1,5 @@
 import React from 'react'
+import 'quill/dist/quill.snow.css'
 
 import {
   CheckListsExample,
@@ -14,11 +15,18 @@ import {
   DraftImageExample,
   SimpleVideoEditor,
   SimpleHashtagEditor,
+  SimpleExample,
+  CopyExample,
+  EventsExample,
+  UrlExample,
+  PluginExample,
+  CustomOptionsExample,
+  CustomToolbarExample,
 } from './components'
 
 export default function App(): JSX.Element {
   return (
-    <div style={{ maxWidth: '1280px', margin: '10px auto' }}>
+    <div style={{ maxWidth: '1280px', margin: '10px auto 100px' }}>
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Welcome to React v17 with Typescript.</h1>
       <p style={{ textAlign: 'center', margin: 0 }}>React: v17.0.2</p>
       <p style={{ textAlign: 'center', margin: 0 }}>Typescript: v4.3.5</p>
@@ -31,6 +39,9 @@ export default function App(): JSX.Element {
         <SearchHighlightingExample />
         <CodeHighlightingExample />
         <ImageExample />
+      </div>
+      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Draft.js</h1>
+      <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
         <SimpleDraftEditor />
         <SomeControlsEditor />
         <SimpleMentionEditor />
@@ -38,6 +49,16 @@ export default function App(): JSX.Element {
         <DraftImageExample />
         <SimpleVideoEditor />
         <SimpleHashtagEditor />
+      </div>
+      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>React Quill</h1>
+      <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
+        <SimpleExample />
+        <CopyExample />
+        <EventsExample />
+        <UrlExample />
+        <PluginExample />
+        <CustomOptionsExample />
+        <CustomToolbarExample />
       </div>
     </div>
   )

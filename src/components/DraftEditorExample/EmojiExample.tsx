@@ -16,7 +16,7 @@ const text = `Cool, we can have all sorts of Emojis here. 🙌
 export default function EmojiExample(): JSX.Element {
   const [editorState, setEditorState] = useState(createEditorStateWithText(text))
   let editor = useRef<Editor>()
-  
+
   // eslint-disable-next-line
   function onChange(editorState: any) {
     setEditorState(editorState)
@@ -38,7 +38,7 @@ export default function EmojiExample(): JSX.Element {
             usePluginEditor={true}
             // eslint-disable-next-line
             // @ts-ignore
-            pluginProps={{ ref: (element: any) => editor = element, plugins }}
+            pluginProps={{ ref: (element: Node) => editor = element, plugins }}
           />
           <EmojiSuggestions />
         </div>
