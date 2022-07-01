@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { lazy, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { Loader } from '../components'
@@ -30,3 +30,9 @@ export default function ProtectedRoutes(props: ProtectedRoutesProps): JSX.Elemen
     )
   }
 }
+
+export const LoadProtectedRoute =
+  (path: string) =>
+  // eslint-disable-next-line react/display-name
+  (): JSX.Element =>
+    <ProtectedRoutes>{lazy(() => import(path))}</ProtectedRoutes>
