@@ -1,23 +1,26 @@
-import React from 'react'
-import { split, HttpLink, ApolloProvider } from '@apollo/client'
-import { getMainDefinition } from '@apollo/client/utilities'
+import React, { createContext, useContext } from 'react'
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, split } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
+import { from } from '@apollo/client/link/core'
+import { onError } from '@apollo/client/link/error'
+import { RetryLink } from '@apollo/client/link/retry'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { getMainDefinition } from '@apollo/client/utilities'
 import { createClient } from 'graphql-ws'
-
-const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
-})
 
 export interface RealTimProps extends JSX.IntrinsicAttributes {
   children: JSX.Element
   auth?: { token: string }
 }
 
-export default function RealTime(props: RealTimProps): JSX.Element {
+export const GQLContext = createContext(null)
+
+export default function RealtimeContext(props: RealTimProps): JSX.Element {
   const wsLink = new GraphQLWsLink(
     createClient({
-      url: 'ws://localhost:4000/graphql',
+      url: `ws:${process.env.REACT_APP_GRAPHQL_ROOT}`,
+      lazy: true,
+      retryAttempts: 2,
       ...(props.auth
         ? {
             connectionParams: {
@@ -27,6 +30,28 @@ export default function RealTime(props: RealTimProps): JSX.Element {
         : {}),
     }),
   )
+
+  const retryLink = new RetryLink({
+    attempts: (count, operation, error) => {
+      const isMutation =
+        operation &&
+        operation.query &&
+        operation.query.definitions &&
+        Array.isArray(operation.query.definitions) &&
+        operation.query.definitions.some((def) => def.kind === 'OperationDefinition' && def.operation === 'mutation')
+
+      if (isMutation) {
+        return !!error && count < 25
+      }
+
+      return !!error && count < 6
+    },
+  })
+
+  const httpLink = new HttpLink({
+    uri: `http:${process.env.REACT_APP_GRAPHQL_ROOT}`,
+    // credentials: 'include',
+  })
 
   // The split function takes three parameters:
   //
@@ -42,10 +67,60 @@ export default function RealTime(props: RealTimProps): JSX.Element {
     httpLink,
   )
 
-  const client = new ApolloClient({
-    link: splitLink,
-    cache: new InMemoryCache(),
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+      graphQLErrors.map(({ message, locations, path }) => {
+        console.log(`[GraphQL error]: Message: ${message}`)
+        console.log(`Location: ${locations}`)
+        console.log(`Path: ${path}`)
+      })
+    }
+
+    // eslint-disable-next-line
+    // @ts-ignore
+    if (networkError && networkError.statusCode === 401) {
+      console.log(`[Network Error]: ${networkError}`)
+    }
   })
 
-  return <ApolloProvider client={client}>{props.children}</ApolloProvider>
+  const authLink = setContext(async (_, { headers }) => ({
+    headers: {
+      ...headers,
+      ...(props.auth
+        ? {
+            authToken: props.auth.token,
+          }
+        : {}),
+    },
+  }))
+
+  const client = new ApolloClient({
+    link: from([errorLink, retryLink, authLink, splitLink]),
+    cache: new InMemoryCache(),
+    assumeImmutableResults: true,
+    queryDeduplication: true,
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'network-only',
+        errorPolicy: 'none',
+      },
+      query: {
+        fetchPolicy: 'network-only',
+        errorPolicy: 'all',
+      },
+    },
+  })
+
+  return (
+    // eslint-disable-next-line
+    // @ts-ignore
+    <GQLContext.Provider {...props} value={{}}>
+      <ApolloProvider client={client}>{props.children}</ApolloProvider>
+    </GQLContext.Provider>
+  )
+}
+
+// eslint-disable-next-line
+export function useGQLContext(): any {
+  return useContext(GQLContext)
 }
