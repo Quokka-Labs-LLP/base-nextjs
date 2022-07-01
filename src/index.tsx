@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals'
 render(
   <StrictMode>
     <BrowserRouter>
+      {/* Define a root level redux provider. */}
       <Provider store={store}>
         <App />
       </Provider>

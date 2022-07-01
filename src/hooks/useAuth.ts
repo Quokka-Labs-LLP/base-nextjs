@@ -7,6 +7,18 @@ export interface CurrentUser {
   user: User
 }
 
+/**
+ * A custom hooks designed to get the details of the
+ * logged in user.
+ *
+ * Usage:
+ * import useAuth from './hooks/useAuth'
+ *
+ * function Login() {
+ *   const user = useAuth()
+ *   ....
+ * }
+ */
 export default function useAuth(): CurrentUser {
   const selectCurrentUser = (state: RootState) => state.auth.user
   const user = useAppSelector(selectCurrentUser)
