@@ -33,7 +33,7 @@ export default function App(): JSX.Element {
   const [input, setInput] = useState('')
   const inputRef = useRef()
   const subscriptionData = useSubscription(SUB_MESSAGE_ADDED)
-  const [mutateFunction] = useMutation(ADD_MESSAGE)
+  const [mutateFunction] = useMutation(ADD_MESSAGE, { errorPolicy: 'all' })
 
   useEffect(() => {
     if (subscriptionData?.data?.messageAdded?.text) {
