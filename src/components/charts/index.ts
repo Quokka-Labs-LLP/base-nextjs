@@ -38,3 +38,5 @@ export { default as ScatterPlot } from './nivo/ScatterPlot'
 export { default as SwarmPlot } from './nivo/SwarmPlot'
 export { default as TimeRangeChart } from './nivo/TimeRangeChart'
 export { default as Treemap } from './nivo/Treemap'
+
+export { default as ForceGraph3D } from './ForceGraph3D'

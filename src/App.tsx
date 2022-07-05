@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Routes, Route } from 'react-router-dom'
 
 import {
   BarChartExample,
@@ -38,14 +39,21 @@ import {
   RadarChartjs,
   ScatterChartjs,
   StackedBarChartjs,
+  BackgroundColor,
+  BasicExample,
+  ColorfullNodes,
+  DirectionalArrows,
+  HTMLContent,
+  NodeManipulation,
 } from './components'
 
 export default function App(): JSX.Element {
   return (
-    <div style={{ maxWidth: '1280px', margin: '10px auto' }}>
+    <div style={{ margin: '10px auto' }}>
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Welcome to React v17 with Typescript.</h1>
       <p style={{ textAlign: 'center', margin: 0 }}>React: v17.0.2</p>
       <p style={{ textAlign: 'center', margin: 0 }}>Typescript: v4.3.5</p>
+
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>ReCharts</h1>
       <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
         <div style={{ padding: '10px' }}>
@@ -89,7 +97,6 @@ export default function App(): JSX.Element {
           <TreemapChart />
         </div>
       </div>
-
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Nivo Charts</h1>
       <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
         <BarChartExample />
@@ -109,7 +116,6 @@ export default function App(): JSX.Element {
         <TimeRangeChartExample />
         <TreemapExample />
       </div>
-
       <h1 style={{ textAlign: 'center', fontWeight: 400 }}>React Chartjs</h1>
       <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
         <div style={{ padding: '10px', width: '580px' }}>
@@ -159,6 +165,28 @@ export default function App(): JSX.Element {
         <div style={{ padding: '10px' }}>
           <h1 style={{ textAlign: 'center', fontWeight: 400 }}>StackedBar Chart</h1>
           <StackedBarChartjs />
+        </div>
+        <div style={{ padding: '10px' }}>
+          <h1 style={{ textAlign: 'center', fontWeight: 400 }}>StackedBar Chart</h1>
+          <Routes>
+            <Route path='/force-graph/basic' element={<BasicExample />} />
+            <Route path='/force-graph/background-color' element={<BackgroundColor />} />
+            <Route path='/force-graph/colorfull-nodes' element={<ColorfullNodes />} />
+            <Route path='/force-graph/directional-arrows' element={<DirectionalArrows />} />
+            <Route path='/force-graph/html-content' element={<HTMLContent />} />
+            <Route path='/force-graph/node-manipulation' element={<NodeManipulation />} />
+          </Routes>
+          <Link to='/force-graph/basic'>Basic Example</Link>
+          <br />
+          <Link to='/force-graph/background-color'>Background Color Example</Link>
+          <br />
+          <Link to='/force-graph/colorfull-nodes'>Colorfull Nodes Example</Link>
+          <br />
+          <Link to='/force-graph/directional-arrows'>Directional Arrows Example</Link>
+          <br />
+          <Link to='/force-graph/html-content'>HTML Content Example</Link>
+          <br />
+          <Link to='/force-graph/node-manipulation'>Node Manipulation Example</Link>
         </div>
       </div>
     </div>

@@ -37,6 +37,7 @@ export {
   RadarChartjs,
   ScatterChartjs,
   StackedBarChartjs,
+  ForceGraph3D,
 } from './charts'
 
 export { default as BarChartExample } from './BarChartExample'
@@ -55,3 +56,10 @@ export { default as ScatterPlotExample } from './ScatterPlotExample'
 export { default as SwarmPlotExample } from './SwarmPlotExample'
 export { default as TimeRangeChartExample } from './TimeRangeChartExample'
 export { default as TreemapExample } from './TreemapExample'
+
+export { default as BackgroundColor } from './ForceGraph3dExample/BackgroundColor'
+export { default as BasicExample } from './ForceGraph3dExample/BasicExample'
+export { default as ColorfullNodes } from './ForceGraph3dExample/ColorfullNodes'
+export { default as DirectionalArrows } from './ForceGraph3dExample/DIrectionalArrows'
+export { default as HTMLContent } from './ForceGraph3dExample/HTMLContent'
+export { default as NodeManipulation } from './ForceGraph3dExample/NodeManipulation'
