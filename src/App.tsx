@@ -22,6 +22,19 @@ import {
   PluginExample,
   CustomOptionsExample,
   CustomToolbarExample,
+  BasicExample,
+  DarkThemeExample,
+  DocumentReadyExample,
+  DragNDropExample,
+  EmojisExample,
+  FontFamilyExample,
+  GetEditedHtmlExample,
+  InitOnLinkExample,
+  InlineToolbarExample,
+  InsertHtmlExample,
+  LiveCodePreviewExample,
+  ToolbarBottomExample,
+  TrackChangesExample,
 } from './components'
 
 export default function App(): JSX.Element {
@@ -59,6 +72,24 @@ export default function App(): JSX.Element {
         <PluginExample />
         <CustomOptionsExample />
         <CustomToolbarExample />
+      </div>
+      <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Froala Editor</h1>
+      <div style={{ display: 'grid', gridTemplateColumns: '45% 45%', gridGap: '60px', marginBottom: '20px' }}>
+        <BasicExample />
+        <DarkThemeExample />
+        <DragNDropExample />
+        <EmojisExample />
+        <FontFamilyExample />
+        <GetEditedHtmlExample />
+        <InitOnLinkExample />
+        <InlineToolbarExample />
+        <InsertHtmlExample />
+        <LiveCodePreviewExample />
+        <ToolbarBottomExample />
+        <TrackChangesExample />
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '100%', gridGap: '60px', marginBottom: '20px' }}>
+        <DocumentReadyExample />
       </div>
     </div>
   )

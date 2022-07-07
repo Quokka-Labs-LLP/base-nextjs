@@ -23,6 +23,7 @@ export interface FroalaConfig {
   /**
    * Specify the options for Code Beautifier.
    */
+   // eslint-disable-next-line
   codeBeautifierOptions?: any
 
   // Code View
@@ -31,10 +32,12 @@ export interface FroalaConfig {
    * Disable or enable using the CodeMirror library to highlight the HTML view.
    * Note: This option requires the CodeMirror library to be included.
    */
+   // eslint-disable-next-line
   codeMirror?: any
   /**
    * Specify the options for CodeMirror.
    */
+   // eslint-disable-next-line
   codeMirrorOptions?: any
   /**
    * A list of buttons to keep active while editor is in Code View mode.
@@ -161,11 +164,13 @@ export interface FroalaConfig {
   /**
    * Pass additional parameters to the file upload request.
    */
+   // eslint-disable-next-line
   fileUploadParams?: any
   /**
    * Set the options for file upload to S3. All the fields from the example
    * below are required. Also make sure that you have enabled CORS on Amazon.
    */
+   // eslint-disable-next-line
   fileUploadToS3?: any
   /**
    * The URL where the files uploaded by the user are saved. When a file is
@@ -188,6 +193,7 @@ export interface FroalaConfig {
    * Defines the fonts that appear under the Font Family button from the rich
    * text editor's toolbar.
    */
+   // eslint-disable-next-line
   fontFamily?: any
   /**
    * The text to display when the font family is unkown or nothing is selected.
@@ -234,6 +240,7 @@ export interface FroalaConfig {
   /**
    * Options for applying styles on form.
    */
+   // eslint-disable-next-line
   formStyles?: any
   /**
    * Buttons for form popup.
@@ -435,6 +442,7 @@ export interface FroalaConfig {
    * An Object with additional header key/value pairs to send along with
    * requests using the XMLHttpRequest transport.
    */
+   // eslint-disable-next-line
   requestHeaders?: any
   /**
    * A that indicates whether or not cross-site Access-Control requests should
@@ -487,22 +495,26 @@ export interface FroalaConfig {
    * The list of buttons that appear in the rich text editor's toolbar on large
    * devices (≥ 1200px).
    */
+   // eslint-disable-next-line
   toolbarButtons?: any
   /**
    * The list of buttons that appear in the rich text editor's toolbar on medium
    * devices (≥ 992px). By default on MD screens, the editor uses the same
    * buttons as for toolbarButtons.
    */
+   // eslint-disable-next-line
   toolbarButtonsMD?: any
   /**
    * The list of buttons that appear in the rich text editor's toolbar on small
    * devices (≥ 768px).
    */
+   // eslint-disable-next-line
   toolbarButtonsSM?: any
   /**
    * The list of buttons that appear in the rich text editor's toolbar on extra
    * small devices (< 768px).
    */
+   // eslint-disable-next-line
   toolbarButtonsXS?: any
   /**
    * A custom HTML selector placing the toolbar inside.
@@ -561,6 +573,7 @@ export interface FroalaConfig {
   /**
    * An object of items to show in the help modal.
    */
+   // eslint-disable-next-line
   helpSets?: any[]
 
   // Image
@@ -640,6 +653,7 @@ export interface FroalaConfig {
   /**
    * Use default image settings for pasted images.
    */
+   // eslint-disable-next-line
   imagePasteProcess?: any
   /**
    * Disables image resize when set to false.
@@ -672,10 +686,12 @@ export interface FroalaConfig {
    * Set custom styles for the selected image. The classes should be defined in
    * CSS, otherwise no changes will be visible on the image's appearance.
    */
+   // eslint-disable-next-line
   imageStyles?: any
   /**
    * Set options for TUI editor plugin.
    */
+   // eslint-disable-next-line
   imageTUIOptions?: any
   /**
    * Allows text near an image when it is aligned to the left or to the right.
@@ -702,6 +718,7 @@ export interface FroalaConfig {
   /**
    * Pass additional parameters to the upload request.
    */
+   // eslint-disable-next-line
   imageUploadParams?: any
   /**
    * Upload images inserted by URL to custom server instead of linking them by
@@ -712,6 +729,7 @@ export interface FroalaConfig {
    * Set the options for image upload to S3. All the fields from the example
    * below are required. Also make sure that you have enabled CORS on Amazon.
    */
+   // eslint-disable-next-line
   imageUploadToS3?: any
   /**
    * The URL where the images uploaded by the user are saved. When an image is
@@ -732,6 +750,7 @@ export interface FroalaConfig {
   /**
    * Additional parameters passed to the image manager image delete request.
    */
+   // eslint-disable-next-line
   imageManagerDeleteParams?: any
   /**
    * The URL where the HTTP request is done to delete the image. The request
@@ -746,6 +765,7 @@ export interface FroalaConfig {
    * Additional parameters passed to the load images request from the image
    * manager.
    */
+   // eslint-disable-next-line
   imageManagerLoadParams?: any
   /**
    * The URL where the HTTP request is done in order to load a page of images
@@ -793,6 +813,7 @@ export interface FroalaConfig {
    * the key is the name of the new style that appears in the dropdown and the
    * value specifies the CSS properties for it.
    */
+   // eslint-disable-next-line
   inlineStyles?: any
 
   // Inline Class
@@ -802,6 +823,7 @@ export interface FroalaConfig {
    * the key is the name of the new class that appears in the dropdown and the
    * value specifies the class name for it.
    */
+   // eslint-disable-next-line
   inlineClasses?: any
 
   // Language
@@ -843,6 +865,7 @@ export interface FroalaConfig {
   /**
    * An object with additional attributes that could be customized for a link.
    */
+   // eslint-disable-next-line
   linkAttributes?: any
   /**
    * Sets the default URL prefix.
@@ -866,6 +889,7 @@ export interface FroalaConfig {
    * Set a predefined list of links to select from when inserting or editing a
    * link.
    */
+   // eslint-disable-next-line
   linkList?: any[]
   /**
    * Allows multiple link styles to be selected at a time.
@@ -885,6 +909,7 @@ export interface FroalaConfig {
    * Set custom styles for the selected link. The classes should be defined in
    * CSS, otherwise no changes will be visible on the link's appearance.
    */
+   // eslint-disable-next-line
   linkStyles?: any
   /**
    * This option allows to edit the link text inside the edit link popup.
@@ -903,6 +928,7 @@ export interface FroalaConfig {
    * enter option is set to FroalaEditor.ENTER_P and as a <div> when the enter
    * option is set to FroalaEditor.ENTER_DIV.
    */
+   // eslint-disable-next-line
   paragraphFormat?: any
   /**
    * The Paragraph Format button from the WYSIWYG editor's toolbar is replaced
@@ -919,10 +945,12 @@ export interface FroalaConfig {
    * defined in CSS, otherwise no changes will be visible on the paragraph's
    * appearance.
    */
+   // eslint-disable-next-line
   paragraphStyles?: any
   /**
    * Set the line height for the current selected paragraph.
    */
+   // eslint-disable-next-line
   lineHeights?: any
 
   // Lists
@@ -956,6 +984,7 @@ export interface FroalaConfig {
   /**
    * The list of Font Awesome icons to show in the modal for inserting icons.
    */
+   // eslint-disable-next-line
   fontAwesomeSets?: any
   /**
    * Set the template to be used for the Font Awesome icons inserted in the
@@ -972,6 +1001,7 @@ export interface FroalaConfig {
   /**
    * The list of special characters to show.
    */
+   // eslint-disable-next-line
   specialCharactersSets?: any
 
   // WebSpellChecker
@@ -979,6 +1009,7 @@ export interface FroalaConfig {
   /**
    * The options used for WebSpellChecker.
    */
+   // eslint-disable-next-line
   events?: any
 
   // Codox Wave
@@ -986,6 +1017,7 @@ export interface FroalaConfig {
   /**
    * Set options for codox plugin.
    */
+   // eslint-disable-next-line
   codoxOptions?: any
   /**
    * The static string value froala
@@ -1012,6 +1044,7 @@ export interface FroalaConfig {
    * A reference to a Froala editor instance, in which the co-editing session
    * should be bootstrapped.
    */
+   // eslint-disable-next-line
   editor?: any
   /**
    * Set to true, if co-editing session should start automatically on
@@ -1041,6 +1074,7 @@ export interface FroalaConfig {
   /**
    * Additional parameters passed to the save request.
    */
+   // eslint-disable-next-line
   saveParams?: any
   /**
    * The URL where the save request is being made. The editor will initialize
@@ -1059,6 +1093,7 @@ export interface FroalaConfig {
    * Set custom styles for the selected table cells. The classes should be
    * defined in CSS, otherwise no changes will be visible.
    */
+   // eslint-disable-next-line
   tableCellStyles?: any
   /**
    * The list of colors used in the edit table colors popup for the background
@@ -1123,6 +1158,7 @@ export interface FroalaConfig {
    * Set custom styles for the selected table. The classes should be defined in
    * CSS, otherwise no changes will be visible on the table's appearance.
    */
+   // eslint-disable-next-line
   tableStyles?: any
 
   // Track Changes
@@ -1221,11 +1257,13 @@ export interface FroalaConfig {
   /**
    * Pass additional parameters to the upload request.
    */
+   // eslint-disable-next-line
   videoUploadParams?: any
   /**
    * Set the options for video upload to S3. All the fields from the example
    * below are required. Also make sure that you have enabled CORS on Amazon.
    */
+   // eslint-disable-next-line
   videoUploadToS3?: any
   /**
    * The URL where the videos uploaded by the user are saved. When a video is
@@ -1247,11 +1285,13 @@ export interface FroalaConfig {
    * Attributes that are removed when pasting something into the rich text
    * editor from Word.
    */
+   // eslint-disable-next-line
   wordDeniedAttrs?: any[]
   /**
    * Tags that are removed together with their content when pasting something
    * into the rich text editor from Word.
    */
+   // eslint-disable-next-line
   wordDeniedTags?: any[]
   /**
    * Show modal to choose if to keep or not styles pasted from Word. If set to
@@ -1280,11 +1320,13 @@ export interface FroalaConfig {
   /**
    * Pass additional parameters to the file upload request.
    */
+   // eslint-disable-next-line
   filesManagerUploadParams?: any
   /**
    * Set the options for file upload to S3. All the fields from the example
    * below are required. Also make sure that you have enabled CORS on Amazon.
    */
+   // eslint-disable-next-line
   filesManagerUploadToS3?: any
   /**
    * The URL where the files uploaded by the user are saved. When a file is
@@ -1305,7 +1347,7 @@ export interface FroalaEditorProps {
   registerCommand?: (Editor: Froala) => void
 }
 
-export default function FroalaEditor(props: FroalaEditorProps) {
+export default function FroalaEditor(props: FroalaEditorProps): JSX.Element {
   const id = `froala__editor__${Math.round(Math.random() * 1000)}`
 
   useEffect(() => {
