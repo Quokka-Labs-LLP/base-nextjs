@@ -611,10 +611,16 @@ export interface FGProps {
    * the current equivalent {x, y} in viewport coordinates.
    */
   graph2ScreenCoords?(x: number, y: number, z: number): Coords
+  tooltip?: JSX.Element | null
 }
 
 export default function ForceGraph(props: FGProps): JSX.Element {
-  // eslint-disable-next-line
-  // @ts-ignore
-  return <ForceGraph3D {...props} />
+  return (
+    <>
+      {/* eslint-disable-next-line */}
+      {/* @ts-ignore */}
+      <ForceGraph3D {...props} />
+      {props.tooltip && <div className='tooltip'>{props.tooltip}</div>}
+    </>
+  )
 }
