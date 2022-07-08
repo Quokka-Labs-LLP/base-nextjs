@@ -44,6 +44,130 @@ li:hover {
   padding: 1px 4px;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.9);
-  user-select: none;
+  /* user-select: none; */
   color: #fff;
+  position: relative;
+  width: fit-content;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltipa {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.node-label .inner-tooltip {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  /* margin-left: -60px; */
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+/* .inner-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+} */
+
+.node-label:hover .inner-tooltip {
+  visibility: visible !important;
+  opacity: 1;
+  background-color: #333;
+}
+
+.tooltip {
+  width: 400px;
+  color: #fff;
+  background-color: #333;
+  cursor: default !important;
+  /* text-align: center; */
+  font-size: 16px;
+  z-index: 10000000;
+  /* height: 250px; */
+  padding: 12px 5px 12px 15px;
+  position: absolute;
+  border-radius: 8px;
+  border: 1px solid #33333326;
+  box-shadow: 0px 6px 20px 5px rgb(0 0 0 / 16%);
+  display: none;
+}
+
+.mindMapTooltipContainer .mindMapTooltipContainerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infinityGraphTooltip b {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.mindMapTooltipContainerHeader img {
+  height: 26px;
+  width: 21px;
+  margin-right: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+.mindMapTooltipContainerHeader .mindMapTooltipMenu {
+  position: absolute;
+  /* display: flex; */
+  /* flex-direction: row; */
+  background-color: #fff;
+  border-radius: 5px;
+  border: solid thin #fff;
+  padding: 10px;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgb(0 0 0 / 18%);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.18);
+  box-shadow: -2px 3px 8px 0px rgb(0 0 0 / 18%);
+  min-width: 80px;
+}
+
+.mindMapTooltipContainerHeader .mindMapTooltipMenu button {
+  padding: 5px;
+  border-radius: 5px;
+  font-family: 'Barlow';
+  font-size: 16px;
+  color: #333;
+  border: none;
+  background-color: #fff;
+  text-align: left;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mindMapTooltipContainerHeader .mindMapTooltipMenu button:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.infinityGraphTooltip p {
+  margin-top: 10px;
+  white-space: pre-wrap;
+  padding-right: 5px;
+  height: 168.29px;
+  overflow-y: scroll;
 }
