@@ -1,12 +1,8 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
 
-const App: React.FC = () => {
-  return (
-    <div>
-      React
-    </div>
-  );
+import LoginPage from './pages/login'
+import './App.css'
+
+export default function App(): JSX.Element {
+  return <LoginPage />
 }
-
-export default App;
