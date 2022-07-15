@@ -24,7 +24,7 @@ export interface FirebaseConfig {
 export interface Context {
   app: SetStateAction<FirebaseApp> | undefined
   loginWithEmailAndPassword?: (email: string, password: string) => Promise<UserCredential | undefined>
-  loginWithPhoneNumber?: (phone: string) => void
+  submitPhoneNumber?: (phone: string) => void
   logout?: () => Promise<void>
   submitPhoneNumberAuthCode?: (code: string) => void
 }
@@ -75,48 +75,29 @@ export default function FirebaseProvider(props: FirebaseProviderProps): JSX.Elem
       })
   }
 
-  function loginWithPhoneNumber(phone: string) {
-    // eslint-disable-next-line
-    // @ts-ignore
-    const auth = getAuth(app)
+  function submitPhoneNumber(phone: string) {
+    const auth = getAuth(app as FirebaseApp | undefined)
     useDeviceLanguage(auth)
 
-    // eslint-disable-next-line
-    // @ts-ignore
-    window.recaptchaVerifier = new RecaptchaVerifier(
-      'recaptcha-container',
-      {
-        size: 'normal',
-        callback: () => {
-          submitPhoneNumberAuth()
-          // eslint-disable-next-line
-          // @ts-ignore
-          signInWithPhoneNumber(auth, phone, window.recaptchaVerifier)
-        },
-      },
-      auth,
-    )
-
-    // eslint-disable-next-line
-    // @ts-ignore
-    const appVerifier = window.recaptchVerifier
-
-    function submitPhoneNumberAuth() {
-      signInWithPhoneNumber(auth, phone, appVerifier).then((confirmationResult) => {
+    signInWithPhoneNumber(auth, phone, new RecaptchaVerifier('recaptcha-container', {}, auth)).then(
+      (confirmationResult) => {
         // SMS sent. Prompt user to type the code from the message, then sign the
         // user in with confirmationResult.confirm(code).
         // eslint-disable-next-line
         // @ts-ignore
         window.confirmationResult = confirmationResult
-        // ...
-      })
-    }
+      },
+    )
   }
 
   function submitPhoneNumberAuthCode(code: string) {
-    // eslint-disable-next-line
-    // @ts-ignore
-    return window.confirmationResult.confirm(code)
+    try {
+      // eslint-disable-next-line
+      // @ts-ignore
+      return window.confirmationResult.confirm(code)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   function logout(): Promise<void> {
@@ -126,7 +107,7 @@ export default function FirebaseProvider(props: FirebaseProviderProps): JSX.Elem
   return (
     <FirebaseContext.Provider
       {...props}
-      value={{ app, loginWithEmailAndPassword, loginWithPhoneNumber, logout, submitPhoneNumberAuthCode }}
+      value={{ app, loginWithEmailAndPassword, logout, submitPhoneNumber, submitPhoneNumberAuthCode }}
     >
       {props.children}
     </FirebaseContext.Provider>
@@ -141,7 +122,7 @@ export interface useFirebaseConfig {
 export function useFirebase(config: useFirebaseConfig = {}): Context {
   const ctx = useContext(FirebaseContext)
   if ('useEmailAndPassword' in config && config.useEmailAndPassword) {
-    delete ctx.loginWithPhoneNumber
+    delete ctx.submitPhoneNumber
     delete ctx.submitPhoneNumberAuthCode
   } else if ('usePhoneNumber' in config && config.usePhoneNumber) {
     delete ctx.loginWithEmailAndPassword

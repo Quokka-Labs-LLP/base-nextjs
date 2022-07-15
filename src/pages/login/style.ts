@@ -6,6 +6,13 @@ export default css`
   width: 100%;
   height: 100vh;
 
+  .vertical_line {
+    height: 450px;
+    width: 2px;
+    background: #a1a1a1;
+    margin: 20px 100px;
+  }
+
   .box__container {
     width: 300px;
     height: 500px;
@@ -24,7 +31,7 @@ export default css`
         sans-serif;
       font-weight: 100;
 
-      h1 {
+      h2 {
         margin: 0;
         font-weight: inherit;
         margin-bottom: 50px;
@@ -49,6 +56,18 @@ export default css`
         }
       }
 
+      .btn-submit {
+        background-color: #ff8c32;
+        padding: 6px 20px;
+        border-radius: 8px;
+        margin: 16px 0px 16px auto;
+        display: flex;
+        width: fit-content;
+        cursor: pointer;
+        box-shadow: #ff8c32 0px 6px 20px -3px;
+        color: #fff;
+      }
+
       .bottom__sheet {
         position: absolute;
         bottom: 0px;
@@ -68,6 +87,7 @@ export default css`
           width: fit-content;
           cursor: pointer;
           box-shadow: #ff8c32 0px 6px 20px -3px;
+          color: #fff;
 
           &:hover {
             background-color: #e57822;
