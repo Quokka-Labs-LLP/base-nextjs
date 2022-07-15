@@ -8,7 +8,14 @@ import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
   signOut,
+  ConfirmationResult,
 } from 'firebase/auth'
+
+declare global {
+  interface Window {
+    confirmationResult: ConfirmationResult
+  }
+}
 
 export interface FirebaseConfig {
   apiKey: string
@@ -36,6 +43,12 @@ export interface FirebaseProviderProps extends JSX.IntrinsicAttributes {
 
 export const FirebaseContext = createContext({} as Context)
 
+/**
+ * A context api for firebase authentication.
+ *
+ * @param props Pass the firebase config into the FirebaseProvider's props.
+ * @returns
+ */
 export default function FirebaseProvider(props: FirebaseProviderProps): JSX.Element {
   const [app, setApp] = useState<SetStateAction<FirebaseApp>>()
 
@@ -43,11 +56,21 @@ export default function FirebaseProvider(props: FirebaseProviderProps): JSX.Elem
 
   useEffect(() => {
     if (config) {
+      /**
+       * Initialize the firebase app.
+       */
       const __app = initializeApp(config, 'CreactReactApp')
       setApp(__app)
     }
   }, [])
 
+  /**
+   * Signs in using an email and password.
+   *
+   * @param email Email of the user.
+   * @param password Password of the user.
+   * @returns Promise<UserCredential>
+   */
   function loginWithEmailAndPassword(email: string, password: string): Promise<UserCredential | undefined> {
     // eslint-disable-next-line
     // @ts-ignore
@@ -75,6 +98,11 @@ export default function FirebaseProvider(props: FirebaseProviderProps): JSX.Elem
       })
   }
 
+  /**
+   * Signs in using a phone number.
+   *
+   * @param phone String - Phone number of the user.
+   */
   function submitPhoneNumber(phone: string) {
     const auth = getAuth(app as FirebaseApp | undefined)
     useDeviceLanguage(auth)
@@ -83,23 +111,29 @@ export default function FirebaseProvider(props: FirebaseProviderProps): JSX.Elem
       (confirmationResult) => {
         // SMS sent. Prompt user to type the code from the message, then sign the
         // user in with confirmationResult.confirm(code).
-        // eslint-disable-next-line
-        // @ts-ignore
         window.confirmationResult = confirmationResult
       },
     )
   }
 
-  function submitPhoneNumberAuthCode(code: string) {
+  /**
+   *
+   * @param code String - Verification code.
+   * @returns
+   */
+  function submitPhoneNumberAuthCode(code: string): Promise<UserCredential | undefined> {
     try {
-      // eslint-disable-next-line
-      // @ts-ignore
       return window.confirmationResult.confirm(code)
     } catch (err) {
       console.log(err)
+      return Promise.resolve(undefined)
     }
   }
 
+  /**
+   * Signs out the current user.
+   * @returns Promise<void>
+   */
   function logout(): Promise<void> {
     return signOut(getAuth(app as FirebaseApp | undefined))
   }
@@ -119,6 +153,12 @@ export interface useFirebaseConfig {
   usePhoneNumber?: boolean
 }
 
+/**
+ * A custom hook that returns the FIrebase Context.
+ *
+ * @param config A config to setup which authentication process should be followed.
+ * @returns Firebase Context.
+ */
 export function useFirebase(config: useFirebaseConfig = {}): Context {
   const ctx = useContext(FirebaseContext)
   if ('useEmailAndPassword' in config && config.useEmailAndPassword) {
