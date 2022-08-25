@@ -1,37 +1,33 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
 
-import './App.css'
-import { Button, Comp, FadeInButton, GlobalStyle, Input, Input1 } from './components'
-
-// Input's attrs will be applied first, and then this attrs obj
-const PasswordInput = styled(Input1).attrs({
-  type: 'password',
-})`
-  // similarly, border will override Input's border
-  border: 2px solid aqua;
-`
+import { Button, Drag, FadeInButton, GlobalStyle, InputWithAttrs, PasswordInput } from './components';
+import './App.css';
 
 export default function App(): JSX.Element {
-  return (
-    <>
-      <GlobalStyle />
-      <FadeInButton>Fade in Button</FadeInButton>
-      <Comp />
-      <Button>Normal</Button>
-      {/* eslint-disable-next-line */}
-      {/* @ts-ignore */}
-      <Button primary>Primary</Button>
+    return (
+        <div style={{ maxWidth: '1440px', margin: '10px auto 100px' }}>
+            <h1 style={{ textAlign: 'center', fontWeight: 400 }}>Welcome to React-v17 with Typescript.</h1>
+            <p style={{ textAlign: 'center', margin: 0 }}>React: v17.0.2</p>
+            <p style={{ textAlign: 'center', margin: 0 }}>Typescript: v4.3.5</p>
+            <p style={{ textAlign: 'center', margin: 0 }}>Styled-Components: v5.3.5</p>
 
-      <Input defaultValue='@probablyup' type='text' />
-      {/* eslint-disable-next-line */}
-      {/* @ts-ignore */}
-      <Input defaultValue='@geelen' type='text' inputColor='rebeccapurple' />
-
-      <Input1 placeholder='A bigger text input' size='2em' />
-      <br />
-      {/* Notice we can still use the size attr from Input */}
-      <PasswordInput placeholder='A bigger password input' size='2em' />
-    </>
-  )
+            <div
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: '49% 49%',
+                    gridColumnGap: '20px',
+                    gridRowGap: '40px',
+                    marginBottom: '20px',
+                    marginTop: '40px',
+                }}
+            >
+                <GlobalStyle />
+                <FadeInButton />
+                <Drag />
+                <Button />
+                <InputWithAttrs />
+                <PasswordInput />
+            </div>
+        </div>
+    );
 }
