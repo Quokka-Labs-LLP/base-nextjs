@@ -1,0 +1,23 @@
+{
+  "AuthenticationPage.schemaTitleLogin": "Inicia sesión | {siteTitle}",
+  "AuthenticationPage.schemaTitleSignup": "Regístrate | {siteTitle}",
+  "Footer.privacy": "Privacidad",
+  "Footer.terms": "Términos",
+  "Footer.toAboutPage": "Sobre nosotros",
+  "Footer.toContactPage": "Contacto",
+  "Footer.toFAQPage": "FAQ",
+  "Footer.toHelpPage": "Ayuda",
+  "LoginForm.emailPlaceholder": "juan.perez@ejemplo.com",
+  "LoginForm.forgotPassword": "Restablecer contraseña.",
+  "LoginForm.forgotPasswordInfo": "¿Has olvidado tu contraseña? {passwordRecoveryLink}",
+  "LoginForm.logIn": "Inicia sesión",
+  "LoginForm.passwordPlaceholder": "Introduce tu contraseña…",
+  "SignupForm.backToLoginPage": "Volver a la página de inicio de sesión",
+  "SignupForm.emailPlaceholder": "juan.perez@ejemplo.com",
+  "SignupForm.firstNameLabel": "Nombre",
+  "SignupForm.firstNamePlaceholder": "Juan",
+  "SignupForm.lastNameLabel": "Apellido",
+  "SignupForm.lastNamePlaceholder": "Perez",
+  "SignupForm.passwordPlaceholder": "Introduce tu contraseña…",
+  "SignupForm.signUp": "Regístrate"
+}

@@ -1,0 +1,23 @@
+{
+  "AuthenticationPage.schemaTitleLogin": "Log in | {siteTitle}",
+  "AuthenticationPage.schemaTitleSignup": "Sign up | {siteTitle}",
+  "Footer.privacy": "Privacy",
+  "Footer.terms": "Terms",
+  "Footer.toAboutPage": "About us",
+  "Footer.toContactPage": "Contact",
+  "Footer.toFAQPage": "FAQ",
+  "Footer.toHelpPage": "Help",
+  "LoginForm.emailPlaceholder": "john.doe@example.com",
+  "LoginForm.forgotPassword": "Reset password.",
+  "LoginForm.forgotPasswordInfo": "Forgot your password? {passwordRecoveryLink}",
+  "LoginForm.logIn": "Log in",
+  "LoginForm.passwordPlaceholder": "Enter your password…",
+  "SignupForm.backToLoginPage": "Back to Login Page",
+  "SignupForm.emailPlaceholder": "john.doe@example.com",
+  "SignupForm.firstNameLabel": "First name",
+  "SignupForm.firstNamePlaceholder": "John",
+  "SignupForm.lastNameLabel": "Last name",
+  "SignupForm.lastNamePlaceholder": "Doe",
+  "SignupForm.passwordPlaceholder": "Enter your password…",
+  "SignupForm.signUp": "Sign up"
+}
