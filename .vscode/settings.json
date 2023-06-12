@@ -1,0 +1,1 @@
+{  "editor.defaultFormatter": "esbenp.prettier-vscode",  "editor.formatOnPaste": true,  "editor.formatOnSave": true,  "editor.minimap.enabled": false,  "editor.tabSize": 2,  "editor.codeActionsOnSave": ["source.addMissingImports", "source.fixAll.eslint"],  "files.autoSave": "afterDelay",  "search.exclude": {    "package-lock.json": true,    "yarn.lock": true  }}

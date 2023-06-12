@@ -1,3 +1,1 @@
-const images = {};
-
-export default images;
+const images = {}export default images

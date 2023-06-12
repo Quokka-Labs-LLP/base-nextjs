@@ -1,3 +1,54 @@
 {
-  "extends": "next/core-web-vitals"
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "extends": [
+    "airbnb-base",
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "quotes": ["error", "single"],
+    "no-duplicate-imports": "error",
+    "linebreak-style": "off",
+    "eol-last": "off",
+    "semi": "off"
+  },
+  "settings": {
+    "next": {
+      "rootDir": true
+    },
+    "react": { "version": "detect" }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "plugins": ["@typescript-eslint", "unused-imports"],
+      "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "next/core-web-vitals"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "parser": "@typescript-eslint/parser",
+      "rules": {
+        "react/function-component-definition": "off",
+        "react/destructuring-assignment": "off",
+        "react/require-default-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "@next/next/no-img-element": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/consistent-type-imports": "error",
+        "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "jsx-quotes": "off",
+        "@typescript-eslint/semi": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "linebreak-style": "off",
+        "eol-last": "off"
+      }
+    }
+  ]
 }
