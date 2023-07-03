@@ -1,2 +1,1 @@
-const hocs = {};
-export default hocs;
+export {}

@@ -1,3 +1,1 @@
-const hooks = {};
-
-export default hooks;
+export {}
