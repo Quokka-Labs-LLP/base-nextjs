@@ -17,7 +17,8 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "preview": "next build && next start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest"
   },
   "dependencies": {
     "env-cmd": "^10.1.0",
