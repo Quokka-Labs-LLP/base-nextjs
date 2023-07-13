@@ -1,0 +1,14 @@
+#!/bin/bash
+. "$(dirname -- "$0")/_/husky.sh"
+#regex to validate commit message  (Note: Replace the NEXT with your project alias in JIRA )
+regex="\((fix|update|style|refactor|feat)\)\[(NEXT-[0-9]{2,4}(, ?NEXT-[0-9]{2,4})*)\]:"
+# Get the commit-msg from stdin
+commit_msg="$(cat $1)"
+# Check if the message matches the regex
+if ! [[ $commit_msg =~ $regex ]]; then
+echo $commit_msg
+echo "Commit message does not match the required format."
+echo "Please use the following format: (type)[NEXT-XXXX]: message(optional)"
+echo "Where type is one of: fix, update, style, refactor, feat"
+exit 1
+fi
