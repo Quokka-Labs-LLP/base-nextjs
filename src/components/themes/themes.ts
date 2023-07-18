@@ -10,12 +10,6 @@ export const theme: any = createTheme({
       main: '#FF0000',
       dark: '#8B0000',
     },
-    custom: {
-      light: '#800000',
-      main: '#f57c00',
-      dark: '#ef6c00',
-      contrastText: 'rgba(0, 0, 0, 0.87)',
-    },
   },
   typography: {
     h1: {
