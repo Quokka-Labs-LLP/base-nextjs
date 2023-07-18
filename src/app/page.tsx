@@ -1,15 +1,19 @@
-import Image from 'next/image'
+'use client'
 
+import { Button, Card, Typography } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+import Image from 'next/image'
 import styles from './page.module.css'
 
 export default function Home() {
+  const theme = useTheme()
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         Get started by editing &nbsp;
         <code className={styles.code}>src/app/page.tsx</code>
       </div>
-
       <div className={styles.center}>
         <Image
           className={styles.logo}
@@ -19,6 +23,12 @@ export default function Home() {
           height={37}
           priority
         />
+        <Card>
+          <Button color='primary' variant='contained'>
+            test
+          </Button>
+          <Typography color={`${theme.palette.primary.dark}`} variant='h1'>Hello</Typography>
+        </Card>
       </div>
 
       <div className={styles.grid}>
