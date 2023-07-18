@@ -5,7 +5,7 @@ export const api = createApi({
   reducerPath: 'api',
   baseQuery,
   tagTypes: ['Posts'], // provide tags here whose api data you want to cache
-  endpoints: builder => ({
+  endpoints: (builder: any) => ({
     fetchallData: builder.query<any, any>({
       query: (data: any) => ({
         url: `${apiRoot}${data.url}`,
