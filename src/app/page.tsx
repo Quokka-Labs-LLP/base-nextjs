@@ -40,7 +40,7 @@ export default function Home() {
   const handleGoogleLogin = async () => {
     await signInWithPopup(auth, googleAuthProvider)
       .then((result: any) => {
-        console.log('result', result)
+        console.log(result)
       })
       .catch((error: any) => {
         console.log('error', error)
