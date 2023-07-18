@@ -9,7 +9,7 @@ const api: AxiosInstance = axios.create({
 
 api.interceptors.request.use((request: any) => {
   if (localStorage.getItem('userToken')) {
-    // here we add headers in api (axiosinstance)
+    // add headers in api (axiosinstance)
     // request.headers = {
     //   AuthorizationToken: String(localStorage.getItem('userToken')),
     // }
