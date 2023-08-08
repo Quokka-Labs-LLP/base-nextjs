@@ -1,8 +1,15 @@
+'use client'
+
+import { GET_LOCATIONS } from '@/graphql/queries/getLocations'
+import { useQuery } from '@apollo/client'
 import Image from 'next/image'
 
 import styles from './page.module.css'
 
 export default function Home() {
+  const { data } = useQuery(GET_LOCATIONS)
+  console.log('data', data)
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
