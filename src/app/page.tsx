@@ -1,6 +1,6 @@
 'use client'
 
-import { GET_LOCATIONS } from '@/graphql/queries/getLocations'
+import { GET_LOCATIONS } from '@/graphql/queries'
 import { useQuery } from '@apollo/client'
 import Image from 'next/image'
 

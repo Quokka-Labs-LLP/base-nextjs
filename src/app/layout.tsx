@@ -1,14 +1,11 @@
 'use client'
 
+import { client } from '@/graphql/client'
+
 import './globals.css'
 
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { ApolloProvider } from '@apollo/client'
 import { Inter } from 'next/font/google'
-
-const client: any = new ApolloClient({
-  uri: 'https://flyby-router-demo.herokuapp.com/',
-  cache: new InMemoryCache(),
-})
 
 const inter = Inter({ subsets: ['latin'] })
 
