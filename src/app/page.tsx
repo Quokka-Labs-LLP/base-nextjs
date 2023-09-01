@@ -1,8 +1,16 @@
+'use client'
+
+import { useFetchallDataQuery } from '@/redux/api/api'
 import Image from 'next/image'
 
 import styles from './page.module.css'
 
 export default function Home() {
+  const reqObj = {
+    url: 'posts',
+  }
+  const { data } = useFetchallDataQuery(reqObj)
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
