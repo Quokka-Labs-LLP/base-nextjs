@@ -1,5 +1,9 @@
-import { FieldInput } from '@/components'
+import Login from './login/page'
 
 export default function Home() {
-  return <FieldInput label='Name' type='text' id='name' />
+  return (
+    <main>
+      <Login />
+    </main>
+  )
 }
