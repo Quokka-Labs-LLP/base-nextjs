@@ -1,9 +1,9 @@
-import { Button } from '@mui/material'
+import Login from './login/page'
 
 export default function Home() {
   return (
     <main>
-      <Button>Hello</Button>
+      <Login />
     </main>
   )
 }

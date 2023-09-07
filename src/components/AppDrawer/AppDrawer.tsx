@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { handleDrawerClose } from '@/redux/features/drawerSlice';
+import { handleDrawerClose } from '@/redux/features/drawerSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
@@ -69,7 +69,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const AppDrawer = () => {
   const theme = useTheme()
   const dispatch = useAppDispatch()
-  const open = useAppSelector((state) => state.drawerReducer.open)
+  const open = useAppSelector((state: any) => state.drawerReducer.open)
   return (
     <Drawer variant='permanent' open={open}>
       <DrawerHeader>
