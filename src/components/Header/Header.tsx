@@ -1,5 +1,7 @@
-'use client'
+'use client';
 
+import { handleDrawerOpen } from '@/redux/features/drawerSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import MenuIcon from '@mui/icons-material/Menu'
 import type { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import MuiAppBar from '@mui/material/AppBar'
@@ -35,29 +37,32 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }))
-const open = { op: false }
-const AppHeader = () => (
-  <Box sx={{ display: 'flex' }}>
-    <CssBaseline />
-    <AppBar position='fixed' open={false}>
-      <Toolbar>
-        <IconButton
-          color='inherit'
-          aria-label='open drawer'
-          // onClick={() => dispatch(handleDrawerOpenClose())}
-          edge='start'
-          sx={{
-            marginRight: 5,
-            ...(open && { display: 'none' }),
-          }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant='h6' noWrap component='div'>
-          Mini variant drawer
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  </Box>
-)
+const AppHeader = () => {
+  const dispatch = useAppDispatch()
+  const open = useAppSelector((state) => state.drawerReducer.open)
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position='fixed' open={open}>
+        <Toolbar>
+          <IconButton
+            color='inherit'
+            aria-label='open drawer'
+            onClick={() => dispatch(handleDrawerOpen())}
+            edge='start'
+            sx={{
+              marginRight: 5,
+              ...(open && { display: 'none' }),
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant='h6' noWrap component='div'>
+            Mini variant drawer
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  )
+}
 export default AppHeader

@@ -1,5 +1,7 @@
-'use client'
+'use client';
 
+import { handleDrawerClose } from '@/redux/features/drawerSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import MailIcon from '@mui/icons-material/Mail'
@@ -66,15 +68,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const AppDrawer = () => {
   const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
-
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
+  const dispatch = useAppDispatch()
+  const open = useAppSelector((state) => state.drawerReducer.open)
   return (
     <Drawer variant='permanent' open={open}>
       <DrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
+        <IconButton onClick={() => dispatch(handleDrawerClose())}>
           {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
       </DrawerHeader>

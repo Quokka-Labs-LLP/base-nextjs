@@ -1,3 +1,4 @@
+import { Providers } from '@/redux/provider'
 import CssBaseline from '@mui/material/CssBaseline'
 import * as React from 'react'
 
@@ -16,11 +17,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body>
-        <ThemeRegistry>
-          <CssBaseline />
-          <AppHeader />
-          <AppDrawer />
-          {/* <Box
+        <Providers>
+          <ThemeRegistry>
+            <CssBaseline />
+            <AppHeader />
+            <AppDrawer />
+            {/* <Box
             component='main'
             sx={{
               flexGrow: 1,
@@ -30,9 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               p: 3,
             }}
           > */}
-          {children}
-          {/* </Box> */}
-        </ThemeRegistry>
+            {children}
+            {/* </Box> */}
+          </ThemeRegistry>
+        </Providers>
       </body>
     </html>
   )
