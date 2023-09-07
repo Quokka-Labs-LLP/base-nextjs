@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { handleDrawerOpen } from '@/redux/features/drawerSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
@@ -39,7 +39,7 @@ const AppBar = styled(MuiAppBar, {
 }))
 const AppHeader = () => {
   const dispatch = useAppDispatch()
-  const open = useAppSelector((state) => state.drawerReducer.open)
+  const open = useAppSelector((state: any) => state.drawerReducer.open)
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
