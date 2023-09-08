@@ -1,3 +1,3 @@
-import FieldInput from './InputFields/FieldInput'
+import FieldInput from './inputFields/fieldInput'
 
 export { FieldInput }
