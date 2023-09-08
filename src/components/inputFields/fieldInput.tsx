@@ -1,12 +1,12 @@
-import { email, password, text } from '@/globals'
-import { emailRegex, passwordRegex } from '@/utils'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
-import { ButtonBase, TextField } from '@mui/material'
-import { Controller } from 'react-hook-form'
+import { email, password, text } from '@/globals';
+import { emailRegex, passwordRegex } from '@/utils';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { ButtonBase, TextField } from '@mui/material';
+import { Controller } from 'react-hook-form';
 import React, { useState } from 'react'
 
-import { FieldInputPropsInterface } from '.'
+import type { FieldInputPropsInterface } from './index'
 
 function FieldInput({
   type,
@@ -30,6 +30,17 @@ function FieldInput({
     setInputType((prev) => (prev === password ? text : password))
   }
 
+  // eslint-disable-next-line consistent-return
+  const doValidate = () => {
+    if (type === email) {
+      return (value: string) => emailRegex.test(value) || '* Please enter a Valid Email'
+    }
+    if (type === password) {
+      return (value: string) =>
+        passwordRegex.test(value) || '* Password must have at least 8 letters'
+    }
+  }
+
   return (
     <Controller
       name={registerWith}
@@ -44,13 +55,7 @@ function FieldInput({
           helperText={helperText}
           {...register(registerWith, {
             required: isRequired ? `* ${label} is required` : false,
-            validate:
-              type === email
-                ? (value: string) => emailRegex.test(value) || '* Please enter a Valid Email'
-                : type === password
-                ? (value: string) =>
-                    passwordRegex.test(value) || '* Password must have at least 8 letters'
-                : null,
+            validate: doValidate(),
           })}
           InputProps={{
             endAdornment: passwordText?.length ? (

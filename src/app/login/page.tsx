@@ -1,19 +1,20 @@
-'use client'
+'use client';
 
-import { FieldInput } from '@/components'
+import { FieldInput } from '@/components';
 import { email, password } from '@/globals'
-import { Button, Paper, ThemeProvider, Typography } from '@mui/material'
+import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
-import { AdminLoginInterface } from '.'
-import theme from '@/styles/theme'
+import { AdminLoginInterface } from './index'
 
 const defaultValues: AdminLoginInterface = {
   email: '',
   password: '',
 }
 
+const isLoggedIn = true
 function Login() {
   const {
     watch,
@@ -22,6 +23,15 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<AdminLoginInterface>({ defaultValues })
+  const router = useRouter()
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/dashboard')
+    } else {
+      router.push('/login')
+    }
+  }, [])
 
   const handleFormSubmit = (data: AdminLoginInterface) => {
     console.log(data)
@@ -47,51 +57,49 @@ function Login() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Paper
-        sx={loginFormStyle}
-        elevation={5}
-        component='form'
-        onSubmit={handleSubmit((data) => handleFormSubmit(data))}
+    <Paper
+      sx={loginFormStyle}
+      elevation={5}
+      component='form'
+      onSubmit={handleSubmit((data) => handleFormSubmit(data))}
+    >
+      <Typography
+        variant='h1'
+        sx={{
+          fontSize: '2.3rem',
+          marginBottom: '1rem',
+        }}
       >
-        <Typography
-          variant='h1'
-          sx={{
-            fontSize: '2.3rem',
-            marginBottom: '1rem',
-          }}
-        >
-          Admin Login
-        </Typography>
+        Admin Login
+      </Typography>
 
-        <FieldInput
-          type={email}
-          fullWidth={true}
-          label='Email Address'
-          isError={!!errors?.email?.message}
-          control={control}
-          register={register}
-          helperText={errors?.email?.message}
-          registerWith={email}
-        />
+      <FieldInput
+        type={email}
+        fullWidth={true}
+        label='Email Address'
+        isError={!!errors?.email?.message}
+        control={control}
+        register={register}
+        helperText={errors?.email?.message}
+        registerWith={email}
+      />
 
-        <FieldInput
-          type={password}
-          fullWidth={true}
-          label='Password'
-          watch={watch}
-          isError={!!errors?.password?.message}
-          control={control}
-          register={register}
-          helperText={errors?.password?.message}
-          registerWith={password}
-        />
+      <FieldInput
+        type={password}
+        fullWidth={true}
+        label='Password'
+        watch={watch}
+        isError={!!errors?.password?.message}
+        control={control}
+        register={register}
+        helperText={errors?.password?.message}
+        registerWith={password}
+      />
 
-        <Button fullWidth size='large' type='submit' variant='contained' color='secondary'>
-          CONTINUE
-        </Button>
-      </Paper>
-    </ThemeProvider>
+      <Button fullWidth size='large' type='submit' variant='contained' color='primary'>
+        CONTINUE
+      </Button>
+    </Paper>
   )
 }
 

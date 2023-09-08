@@ -1,5 +1,9 @@
-import { createTheme } from '@mui/material/styles'
-import { Roboto } from 'next/font/google'
+import { createTheme } from '@mui/material/styles';
+import { Roboto } from 'next/font/google';
+
+
+
+
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -9,7 +13,7 @@ const roboto = Roboto({
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
   typography: {
     fontFamily: roboto.style.fontFamily,

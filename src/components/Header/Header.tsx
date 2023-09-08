@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography'
 // import { useDispatch, useSelector } from 'react-redux'
 import * as React from 'react'
 
+import AccountMenu from './AccountMenu'
+
 const drawerWidth = 240
 
 interface AppBarProps extends MuiAppBarProps {
@@ -57,9 +59,10 @@ const AppHeader = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap component='div'>
-            Mini variant drawer
+          <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1 }}>
+            Next (JS / TS) Admin
           </Typography>
+          <AccountMenu />
         </Toolbar>
       </AppBar>
     </Box>

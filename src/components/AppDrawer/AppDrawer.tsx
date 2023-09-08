@@ -1,11 +1,13 @@
-'use client'
+'use client';
 
-import { handleDrawerClose } from '@/redux/features/drawerSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import { handleDrawerClose } from '@/redux/features/drawerSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import MailIcon from '@mui/icons-material/Mail'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
+import PostsActive from '@mui/icons-material/DynamicFeed'
+import Posts from '@mui/icons-material/DynamicFeedOutlined'
+import UsersActive from '@mui/icons-material/SupervisorAccount'
+import Users from '@mui/icons-material/SupervisorAccountOutlined'
 import Divider from '@mui/material/Divider'
 import MuiDrawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
@@ -17,6 +19,9 @@ import ListItemText from '@mui/material/ListItemText'
 // eslint-disable-next-line
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles'
 import * as React from 'react'
+import Link from 'next/link'
+import { useParams, usePathname, useRouter } from 'next/navigation'
+import { Router } from 'next/router'
 
 const drawerWidth = 240
 
@@ -70,6 +75,24 @@ const AppDrawer = () => {
   const theme = useTheme()
   const dispatch = useAppDispatch()
   const open = useAppSelector((state: any) => state.drawerReducer.open)
+
+  const pathname = usePathname()
+
+  const navLinks = [
+    {
+      title: 'Users',
+      path: '/dashboard/users/',
+      icons:
+        pathname === '/dashboard/users/' ? <UsersActive style={{ color: 'white' }} /> : <Users />,
+    },
+    {
+      title: 'Posts',
+      path: '/dashboard/posts/',
+      icons:
+        pathname === '/dashboard/posts/' ? <PostsActive style={{ color: 'white' }} /> : <Posts />,
+    },
+  ]
+
   return (
     <Drawer variant='permanent' open={open}>
       <DrawerHeader>
@@ -79,53 +102,40 @@ const AppDrawer = () => {
       </DrawerHeader>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
+        {navLinks.map(({ path, title, icons }) => {
+          const isActive = pathname === path
+          return (
+            <ListItem
+              key={path}
+              disablePadding
+              sx={{ display: 'block', backgroundColor: `${isActive ? '#1976d2' : 'transparent'}` }}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
+              <Link
+                href={path}
+                style={{ textDecoration: 'none', color: `${isActive ? 'white' : '#1976d2'}` }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {icons}
+                  </ListItemIcon>
+                  <ListItemText primary={title} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          )
+        })}
       </List>
     </Drawer>
   )
