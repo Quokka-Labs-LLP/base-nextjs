@@ -1,7 +1,10 @@
-'use client';
+'use client'
 
-import { FieldInput } from '@/components';
+import { FieldInput } from '@/components'
 import { email, password } from '@/globals'
+import { apiLoginUser } from '@/lib/api-request'
+import { resetUserAuth, setUserAuth } from '@/redux/features/auth'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import React, { useEffect } from 'react'
@@ -14,7 +17,6 @@ const defaultValues: AdminLoginInterface = {
   password: '',
 }
 
-const isLoggedIn = true
 function Login() {
   const {
     watch,
@@ -23,18 +25,14 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<AdminLoginInterface>({ defaultValues })
+
+  const dispatch = useAppDispatch()
   const router = useRouter()
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push('/dashboard')
-    } else {
-      router.push('/login')
-    }
-  }, [])
-
-  const handleFormSubmit = (data: AdminLoginInterface) => {
+  const handleFormSubmit = async (data: AdminLoginInterface) => {
     console.log(data)
+    const r = await apiLoginUser(JSON.stringify(data))
+    dispatch(setUserAuth(r))
+    router.push('/dashboard/posts')
   }
 
   const loginFormStyle = {

@@ -1,5 +1,6 @@
-import { Providers } from '@/redux/provider'
+import { Providers } from '@/redux/provider';
 import CssBaseline from '@mui/material/CssBaseline'
+import { useStore } from 'react-redux'
 import * as React from 'react'
 
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry'
@@ -12,7 +13,7 @@ export const metadata = {
 
 // const DRAWER_WIDTH = 240
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <body>
@@ -27,3 +28,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+export default RootLayout

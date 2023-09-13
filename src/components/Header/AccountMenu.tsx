@@ -1,5 +1,6 @@
 'use client'
 
+import { resetUserAuth } from '@/redux/features/auth'
 import Logout from '@mui/icons-material/Logout'
 import PersonAdd from '@mui/icons-material/PersonAdd'
 import Settings from '@mui/icons-material/Settings'
@@ -11,9 +12,13 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
+import { useDispatch } from 'react-redux'
 import * as React from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function AccountMenu() {
+  const dispatch = useDispatch()
+  const router = useRouter()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -94,7 +99,12 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            dispatch(resetUserAuth())
+            router.push('/login')
+          }}
+        >
           <ListItemIcon>
             <Logout fontSize='small' />
           </ListItemIcon>

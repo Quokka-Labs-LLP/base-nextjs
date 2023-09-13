@@ -1,3 +1,5 @@
+import { apiGetTasks } from '@/lib/api-request'
+
 import {
   PaginationWrapper,
   PaperWrapper,
@@ -7,26 +9,12 @@ import {
   TableRowWrapper,
   TableWrapper,
 } from '@/components/Table'
+import { getData } from '@/app/api/post/route'
 
 import ActionButton from './action'
 
-async function getData() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-  console.log(res)
-
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
-
-  return res.json()
-}
-
 export default async function Page() {
-  const data = await getData()
+  const data: any[] = []
 
   return (
     <div>
@@ -39,7 +27,7 @@ export default async function Page() {
             <TableCellWrapper>Action</TableCellWrapper>
           </TableHeadWrapper>
           <TableBodyWrapper>
-            {data.map((item: any) => {
+            {data?.map((item: any) => {
               return (
                 <TableRowWrapper key={item.id}>
                   <TableCellWrapper>{item.title}</TableCellWrapper>
