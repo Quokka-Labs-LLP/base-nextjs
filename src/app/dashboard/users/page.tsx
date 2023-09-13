@@ -1,5 +1,3 @@
-import { Dialog } from '@mui/material'
-
 import DialogV1 from '@/components/Dialog/DialogV1'
 import {
   PaginationWrapper,
@@ -12,6 +10,7 @@ import {
 } from '@/components/Table'
 
 import ActionButton from './action'
+import { Search, SearchWithBtn } from './Search'
 
 async function getData() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -33,6 +32,8 @@ export default async function Page() {
   return (
     <div>
       <h1>Users</h1>
+      <Search label='Search' size='small' variant='standard' />
+      <SearchWithBtn label='Search with button' size='small' variant='standard' />
       <PaperWrapper>
         <TableWrapper>
           <TableHeadWrapper>
