@@ -1,7 +1,9 @@
 export interface MyBarChartProps {
-  label: string
+  labelOne: string
+  labelTwo: string
   xAxisValues: string[]
-  barHeightValues: number[]
+  barHeightValuesOne: number[]
+  barHeightValuesTwo: number[]
 
   yAxisSteps?: number
 }
