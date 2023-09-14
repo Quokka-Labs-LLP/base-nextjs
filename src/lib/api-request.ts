@@ -1,4 +1,5 @@
-import { FilteredUser, UserLoginResponse } from './types'
+import { FilteredUser, UserLoginResponse } from './types';
+
 
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || 'http://localhost:5000'
 
@@ -32,7 +33,8 @@ async function handleResponse<T>(response: Response): Promise<T> {
 // }
 
 export async function apiLoginUser(credentials: string): Promise<Pick<UserLoginResponse, 'data'>> {
-  const response = await fetch(`https://60d6-45-122-120-19.ngrok-free.app/api/v1/users/login`, {
+  // https://60d6-45-122-120-19.ngrok-free.app
+  const response = await fetch(`${SERVER_ENDPOINT}/api/v1/users/login`, {
     method: 'POST',
     credentials: 'include',
     // // @ts-ignore
@@ -46,48 +48,15 @@ export async function apiLoginUser(credentials: string): Promise<Pick<UserLoginR
   return handleResponse<UserLoginResponse>(response).then((data) => data)
 }
 
-// export async function apiLogoutUser(): Promise<void> {
-//   const response = await fetch(`${SERVER_ENDPOINT}/api/auth/logout`, {
-//     method: 'GET',
-//     credentials: 'include',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
 
-//   return handleResponse<void>(response)
-// }
-
-// export async function apiGetAuthUser(token?: string): Promise<FilteredUser> {
-//   const headers: Record<string, string> = {
-//     'Content-Type': 'application/json',
-//   }
-
-//   if (token) {
-//     headers['Authorization'] = `Bearer ${token}`
-//   }
-//   const response = await fetch(`${SERVER_ENDPOINT}/api/users/me`, {
-//     method: 'GET',
-//     credentials: 'include',
-//     headers,
-//   })
-
-//   return handleResponse<UserResponse>(response).then((data) => data.data.user)
-// }
-
-const getToken = () => localStorage.getItem('token')
-export async function apiGetTasks(shouldAttachToken?: boolean): Promise<any> {
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-  }
-  if (shouldAttachToken) {
-    headers['Authorization'] = `Bearer ${getToken()}`
-  }
-  const response = await fetch(`${SERVER_ENDPOINT}/api/v1/tasks/get-task`, {
+export async function apiLogoutUser(): Promise<void> {
+  const response = await fetch(`${SERVER_ENDPOINT}/api/v1/users/logout`, {
     method: 'GET',
     credentials: 'include',
-    headers,
+    headers: {
+      'Content-Type': 'application/json',
+    },
   })
 
-  return Promise.resolve(response).then((data) => data)
+  return handleResponse<void>(response)
 }

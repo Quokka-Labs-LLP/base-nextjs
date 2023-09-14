@@ -1,5 +1,6 @@
-'use client';
+'use client'
 
+import { apiLogoutUser } from '@/lib/api-request'
 import { resetUserAuth } from '@/redux/features/auth'
 import Logout from '@mui/icons-material/Logout'
 import Settings from '@mui/icons-material/Settings'
@@ -27,6 +28,12 @@ export default function AccountMenu() {
   }
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleLogout = async () => {
+    await apiLogoutUser()
+    dispatch(resetUserAuth())
+    router.push('/login')
   }
 
   console.log('hoverId', hoverId)
@@ -97,13 +104,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            dispatch(resetUserAuth())
-            router.push('/login')
-          }}
-          id='logout'
-        >
+        <MenuItem onClick={handleLogout} id='logout'>
           <ListItemIcon>
             <Logout
               fontSize='small'
