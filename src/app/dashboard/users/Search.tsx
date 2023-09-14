@@ -1,12 +1,16 @@
-'use client'
+'use client';
 
-import { useDebounce } from '@/hooks'
+import { useDebounce } from '@/hooks';
 import React, { useEffect, useState } from 'react'
 
-import SearchWithButton from '@/components/inputFields/SearchFieldWithButton'
+import SearchWithButton from '@/components/InputFields/SearchFieldWithButton'
 import SearchWithDebounce, {
   SearchWithDebounceProps,
-} from '@/components/inputFields/SearchWithDebounce'
+} from '@/components/InputFields/SearchWithDebounce'
+
+
+
+
 
 interface SearchProps extends Omit<SearchWithDebounceProps, 'value' | 'handleInputChange'> {}
 
