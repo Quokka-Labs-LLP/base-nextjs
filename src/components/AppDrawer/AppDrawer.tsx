@@ -1,8 +1,9 @@
-'use client';
+'use client'
 
-import { handleDrawerClose } from '@/redux/features/drawerSlice';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import path from 'path'
+import { handleDrawerClose } from '@/redux/features/drawerSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import PostsActive from '@mui/icons-material/DynamicFeed'
 import Posts from '@mui/icons-material/DynamicFeedOutlined'
@@ -108,11 +109,17 @@ const AppDrawer = () => {
             <ListItem
               key={path}
               disablePadding
-              sx={{ display: 'block', backgroundColor: `${isActive ? '#1976d2' : 'transparent'}` }}
+              sx={{
+                display: 'block',
+                backgroundColor: `${isActive ? theme.palette.primary.main : 'transparent'}`,
+              }}
             >
               <Link
                 href={path}
-                style={{ textDecoration: 'none', color: `${isActive ? 'white' : '#1976d2'}` }}
+                style={{
+                  textDecoration: 'none',
+                  color: `${isActive ? 'white' : theme.palette.primary.main}`,
+                }}
               >
                 <ListItemButton
                   sx={{
@@ -126,6 +133,7 @@ const AppDrawer = () => {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color: `${isActive ? 'white' : theme.palette.primary.main}`,
                     }}
                   >
                     {icons}

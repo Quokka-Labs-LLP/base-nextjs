@@ -1,3 +1,5 @@
+import { Typography } from '@/lib/mui'
+
 import DialogV1 from '@/components/Dialog/DialogV1'
 import {
   PaginationWrapper,
@@ -31,9 +33,15 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Users</h1>
-      <Search label='Search' size='small' variant='standard' />
-      <SearchWithBtn label='Search with button' size='small' variant='standard' />
+      <Typography component={'h1'} fontSize={'2rem'}>
+        Users
+      </Typography>
+      <div
+        style={{ marginBottom: '10px', width: '100%', display: 'flex', justifyContent: 'flex-end' }}
+      >
+        <Search label='Search' size='small' variant='standard' />
+      </div>
+      {/* <SearchWithBtn label='Search with button' size='small' variant='standard' /> */}
       <PaperWrapper>
         <TableWrapper>
           <TableHeadWrapper>

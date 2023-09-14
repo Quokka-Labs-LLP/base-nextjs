@@ -50,7 +50,7 @@ const SearchWithBtn = (props: SearchProps) => {
       value={value}
       sx={{
         '.MuiInputBase-root': {
-          paddingRight: 0,
+          paddingRight: '08px',
         },
       }}
     />

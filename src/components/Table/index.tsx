@@ -1,6 +1,7 @@
 'use client'
 
 import Paper from '@mui/material/Paper'
+import { useTheme } from '@mui/material/styles'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -50,6 +51,7 @@ export const TableCellWrapper = ({ children }: { children: React.ReactNode }) =>
   return <TableCell>{children}</TableCell>
 }
 export const PaginationWrapper = ({ rows }: { rows: any[] }) => {
+  const theme = useTheme()
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
@@ -70,6 +72,7 @@ export const PaginationWrapper = ({ rows }: { rows: any[] }) => {
       page={page}
       onPageChange={handleChangePage}
       onRowsPerPageChange={handleChangeRowsPerPage}
+      color={theme.palette.primary.main}
     />
   )
 }

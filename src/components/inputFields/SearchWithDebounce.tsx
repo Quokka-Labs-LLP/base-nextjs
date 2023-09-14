@@ -21,6 +21,7 @@ const SearchWithDebounce = (props: SearchWithDebounceProps) => {
         id={id}
         size={size}
         value={value}
+        variant='outlined'
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(e)}
       />
     </div>

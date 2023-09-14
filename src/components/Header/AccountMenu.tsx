@@ -1,16 +1,15 @@
-'use client'
+'use client';
 
 import { resetUserAuth } from '@/redux/features/auth'
 import Logout from '@mui/icons-material/Logout'
-import PersonAdd from '@mui/icons-material/PersonAdd'
 import Settings from '@mui/icons-material/Settings'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { useTheme } from '@mui/material/styles'
 import Tooltip from '@mui/material/Tooltip'
 import { useDispatch } from 'react-redux'
 import * as React from 'react'
@@ -18,8 +17,10 @@ import { useRouter } from 'next/navigation'
 
 export default function AccountMenu() {
   const dispatch = useDispatch()
+  const theme = useTheme()
   const router = useRouter()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [hoverId, setHoverId] = React.useState('')
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -27,6 +28,9 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  console.log('hoverId', hoverId)
+
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -44,6 +48,8 @@ export default function AccountMenu() {
         </Tooltip>
       </Box>
       <Menu
+        // @ts-ignore
+        onMouseOver={(e) => setHoverId(e.target?.id)}
         anchorEl={anchorEl}
         id='account-menu'
         open={open}
@@ -62,6 +68,11 @@ export default function AccountMenu() {
                 ml: -0.5,
                 mr: 1,
               },
+              '& .MuiMenuItem-root:hover': {
+                backgroundColor: theme.palette.primary.main,
+                color: 'white',
+              },
+
               '&:before': {
                 content: '""',
                 display: 'block',
@@ -80,22 +91,9 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} id='setting'>
           <ListItemIcon>
-            <PersonAdd fontSize='small' />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize='small' />
+            <Settings fontSize='small' sx={{ color: hoverId === 'setting' ? 'white' : 'grey' }} />
           </ListItemIcon>
           Settings
         </MenuItem>
@@ -104,9 +102,15 @@ export default function AccountMenu() {
             dispatch(resetUserAuth())
             router.push('/login')
           }}
+          id='logout'
         >
           <ListItemIcon>
-            <Logout fontSize='small' />
+            <Logout
+              fontSize='small'
+              sx={{
+                color: hoverId === 'logout' ? 'white' : 'grey',
+              }}
+            />
           </ListItemIcon>
           Logout
         </MenuItem>

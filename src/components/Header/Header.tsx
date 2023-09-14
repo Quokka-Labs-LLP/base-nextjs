@@ -1,20 +1,23 @@
-'use client'
+'use client';
 
-import { handleDrawerOpen } from '@/redux/features/drawerSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import MenuIcon from '@mui/icons-material/Menu'
-import type { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
-import MuiAppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import CssBaseline from '@mui/material/CssBaseline'
-import IconButton from '@mui/material/IconButton'
-import { styled } from '@mui/material/styles'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
+import { handleDrawerOpen } from '@/redux/features/drawerSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import MenuIcon from '@mui/icons-material/Menu';
+import type { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 // import { useDispatch, useSelector } from 'react-redux'
-import * as React from 'react'
+import * as React from 'react';
 
-import AccountMenu from './AccountMenu'
+
+
+import AccountMenu from './AccountMenu';
+
 
 const drawerWidth = 240
 
@@ -26,6 +29,7 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -45,7 +49,7 @@ const AppHeader = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position='fixed' open={open}>
+      <AppBar position='fixed' open={open} color='primary'>
         <Toolbar>
           <IconButton
             color='inherit'
