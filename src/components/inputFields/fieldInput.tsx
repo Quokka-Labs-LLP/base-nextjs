@@ -1,9 +1,9 @@
-import { email, password, text } from '@/globals';
-import { emailRegex, passwordRegex } from '@/utils';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { ButtonBase, TextField } from '@mui/material';
-import { Controller } from 'react-hook-form';
+import { email, password, text } from '@/globals'
+import { emailRegex, passwordRegex } from '@/utils'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import { ButtonBase, TextField } from '@mui/material'
+import { Controller } from 'react-hook-form'
 import React, { useState } from 'react'
 
 import type { FieldInputPropsInterface } from './index'
