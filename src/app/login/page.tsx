@@ -3,12 +3,14 @@
 import { FieldInput } from '@/components'
 import { email, password } from '@/globals'
 import { apiLoginUser } from '@/lib/api-request'
-import { resetUserAuth, setUserAuth } from '@/redux/features/auth'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { setUserAuth } from '@/redux/features/auth'
+import { useAppDispatch } from '@/redux/hooks'
 import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation'
+
+import InputCheckbox from '@/components/Checkbox/Checkbox'
 
 import { AdminLoginInterface } from './index'
 
@@ -93,6 +95,25 @@ function Login() {
         helperText={errors?.password?.message}
         registerWith={password}
       />
+
+      {/* <RadioButtons
+        label='Gender'
+        registerWith='gender'
+        control={control}
+        isRequired={true}
+        error={errors?.gender?.message}
+      >
+        <FormControlLabel value='female' control={<Radio />} label='Female' />
+        <FormControlLabel value='male' control={<Radio />} label='Male' />
+      </RadioButtons> */}
+
+      {/* <InputCheckbox
+        registerWith='isInterested'
+        isRequired={true}
+        control={control}
+        label='Are you interested'
+        error={errors?.isInterested?.message}
+      /> */}
 
       <Button fullWidth size='large' type='submit' variant='contained' color='primary'>
         CONTINUE
