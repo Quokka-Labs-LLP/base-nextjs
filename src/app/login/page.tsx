@@ -3,14 +3,14 @@
 import { FieldInput } from '@/components'
 import { email, password } from '@/globals'
 import { apiLoginUser } from '@/lib/api-request'
-import { resetUserAuth, setUserAuth } from '@/redux/features/auth'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { setUserAuth } from '@/redux/features/auth'
+import { useAppDispatch } from '@/redux/hooks'
 import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation'
 
-import { AdminLoginInterface } from './index'
+import type { AdminLoginInterface } from './index'
 
 const defaultValues: AdminLoginInterface = {
   email: '',
@@ -70,10 +70,9 @@ function Login() {
       >
         Admin Login
       </Typography>
-
       <FieldInput
         type={email}
-        fullWidth={true}
+        fullWidth
         label='Email Address'
         isError={!!errors?.email?.message}
         control={control}
@@ -81,10 +80,9 @@ function Login() {
         helperText={errors?.email?.message}
         registerWith={email}
       />
-
       <FieldInput
         type={password}
-        fullWidth={true}
+        fullWidth
         label='Password'
         watch={watch}
         isError={!!errors?.password?.message}
@@ -93,7 +91,6 @@ function Login() {
         helperText={errors?.password?.message}
         registerWith={password}
       />
-
       <Button fullWidth size='large' type='submit' variant='contained' color='primary'>
         CONTINUE
       </Button>
