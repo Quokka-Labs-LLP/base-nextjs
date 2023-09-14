@@ -5,14 +5,14 @@ import { email, password } from '@/globals'
 import { apiLoginUser } from '@/lib/api-request'
 import { setUserAuth } from '@/redux/features/auth'
 import { useAppDispatch } from '@/redux/hooks'
+
 import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import React from 'react'
+
 import { useRouter } from 'next/navigation'
 
-import InputCheckbox from '@/components/Checkbox/Checkbox'
-
-import { AdminLoginInterface } from './index'
+import type { AdminLoginInterface } from './index'
 
 const defaultValues: AdminLoginInterface = {
   email: '',
@@ -72,10 +72,9 @@ function Login() {
       >
         Admin Login
       </Typography>
-
       <FieldInput
         type={email}
-        fullWidth={true}
+        fullWidth
         label='Email Address'
         isError={!!errors?.email?.message}
         control={control}
@@ -83,10 +82,9 @@ function Login() {
         helperText={errors?.email?.message}
         registerWith={email}
       />
-
       <FieldInput
         type={password}
-        fullWidth={true}
+        fullWidth
         label='Password'
         watch={watch}
         isError={!!errors?.password?.message}
@@ -95,26 +93,6 @@ function Login() {
         helperText={errors?.password?.message}
         registerWith={password}
       />
-
-      {/* <RadioButtons
-        label='Gender'
-        registerWith='gender'
-        control={control}
-        isRequired={true}
-        error={errors?.gender?.message}
-      >
-        <FormControlLabel value='female' control={<Radio />} label='Female' />
-        <FormControlLabel value='male' control={<Radio />} label='Male' />
-      </RadioButtons> */}
-
-      {/* <InputCheckbox
-        registerWith='isInterested'
-        isRequired={true}
-        control={control}
-        label='Are you interested'
-        error={errors?.isInterested?.message}
-      /> */}
-
       <Button fullWidth size='large' type='submit' variant='contained' color='primary'>
         CONTINUE
       </Button>

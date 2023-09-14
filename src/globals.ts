@@ -25,7 +25,7 @@ export function FETCH(
 
 export const checkObjectLength = (obj: any) => {
   if (Object.keys(obj).length) return true
-  else return false
+  return false
 }
 
 export const email = 'email'
