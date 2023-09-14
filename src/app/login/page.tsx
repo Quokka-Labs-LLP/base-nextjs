@@ -5,10 +5,15 @@ import { email, password } from '@/globals'
 import { apiLoginUser } from '@/lib/api-request'
 import { setUserAuth } from '@/redux/features/auth'
 import { useAppDispatch } from '@/redux/hooks'
+import { setUserAuth } from '@/redux/features/auth'
+import { useAppDispatch } from '@/redux/hooks'
 import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import React from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation'
+
+import InputCheckbox from '@/components/Checkbox/Checkbox'
 
 import type { AdminLoginInterface } from './index'
 

@@ -6,16 +6,25 @@ import {
   BarElement,
   CategoryScale,
   Chart as ChartJS,
+  Legend,
   LinearScale,
+  Title,
   Tooltip,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
 import { MyBarChartProps } from './MyBarChart'
 
-ChartJS.register(BarController, BarElement, Tooltip, CategoryScale, LinearScale)
+ChartJS.register(BarController, BarElement, Tooltip, CategoryScale, LinearScale, Title, Legend)
 
-const MyBarChart = ({ label, xAxisValues, yAxisSteps = 1, barHeightValues }: MyBarChartProps) => {
+const MyBarChart = ({
+  labelOne,
+  labelTwo,
+  xAxisValues,
+  yAxisSteps = 1,
+  barHeightValuesOne,
+  barHeightValuesTwo,
+}: MyBarChartProps) => {
   return (
     <Paper elevation={5} sx={{ padding: '1rem' }}>
       <Bar
@@ -24,8 +33,8 @@ const MyBarChart = ({ label, xAxisValues, yAxisSteps = 1, barHeightValues }: MyB
           labels: xAxisValues,
           datasets: [
             {
-              label,
-              data: barHeightValues,
+              label: labelOne,
+              data: barHeightValuesOne,
               borderWidth: 1,
               barPercentage: 0.5,
               barThickness: 20,
@@ -38,6 +47,23 @@ const MyBarChart = ({ label, xAxisValues, yAxisSteps = 1, barHeightValues }: MyB
                 'rgb(54, 162, 235)',
                 'rgb(153, 102, 255)',
                 'rgb(201, 203, 207)',
+              ],
+            },
+            {
+              label: labelTwo,
+              data: barHeightValuesTwo,
+              borderWidth: 1,
+              barPercentage: 0.5,
+              barThickness: 20,
+              minBarLength: 2,
+              backgroundColor: [
+                'rgb(186, 74, 98)',
+                'rgb(191, 119, 47)',
+                'rgb(173, 138, 56)',
+                'rgb(54, 139, 139)',
+                'rgb(38, 115, 166)',
+                'rgb(105, 71, 175)',
+                'rgb(137, 138, 140)',
               ],
             },
           ],
