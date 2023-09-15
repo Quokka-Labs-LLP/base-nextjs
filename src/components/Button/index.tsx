@@ -1,6 +1,10 @@
-import { IconButton } from '@mui/material'
-import Button from '@mui/material/Button'
-import * as React from 'react'
+import { IconButton } from '@mui/material';
+import Button from '@mui/material/Button';
+import * as React from 'react';
+
+
+
+
 
 interface ButtonWithIconProps {
   btnText: string
@@ -58,15 +62,14 @@ export const CustomButton = ({
 }
 
 export const CustomIconButton = ({
-  btnText,
   color,
   icon,
   handleClick,
   size,
   style,
-}: Omit<ButtonWithIconProps, 'displayPos' | 'variant'>) => {
+}: Omit<ButtonWithIconProps, 'displayPos' | 'btnText'>) => {
   return (
-    <IconButton aria-label={btnText} color={color} style={style} size={size} onClick={handleClick}>
+    <IconButton color={color} style={style} size={size} onClick={handleClick} edge='end'>
       {icon}
     </IconButton>
   )

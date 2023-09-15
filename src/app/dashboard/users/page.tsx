@@ -1,4 +1,4 @@
-import { Dialog } from '@mui/material'
+import { Typography } from '@/lib/mui'
 
 import DialogV1 from '@/components/Dialog/DialogV1'
 import {
@@ -12,6 +12,7 @@ import {
 } from '@/components/Table'
 
 import ActionButton from './action'
+import { Search, SearchWithBtn } from './Search'
 
 async function getData() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
@@ -32,7 +33,15 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Users</h1>
+      <Typography component={'h1'} fontSize={'2rem'}>
+        Users
+      </Typography>
+      <div
+        style={{ marginBottom: '10px', width: '100%', display: 'flex', justifyContent: 'flex-end' }}
+      >
+        <Search label='Search' size='small' variant='standard' />
+      </div>
+      {/* <SearchWithBtn label='Search with button' size='small' variant='standard' /> */}
       <PaperWrapper>
         <TableWrapper>
           <TableHeadWrapper>

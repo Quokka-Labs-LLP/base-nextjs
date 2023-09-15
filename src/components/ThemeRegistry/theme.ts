@@ -7,9 +7,17 @@ const roboto = Roboto({
   display: 'swap',
 })
 
+const customThemeOption = {
+  primaryColor: '#ec5f2a',
+  secondaryColor: '#ff9727',
+  tertiaryColor: '#b3e5fc',
+}
+
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
+    primary: { main: customThemeOption.primaryColor },
+    secondary: { main: customThemeOption.secondaryColor },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,
