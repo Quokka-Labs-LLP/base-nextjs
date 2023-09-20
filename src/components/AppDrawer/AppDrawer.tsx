@@ -1,6 +1,5 @@
 'use client'
 
-import path from 'path'
 import { handleDrawerClose } from '@/redux/features/drawerSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import BarChartIcon from '@mui/icons-material/BarChart'
@@ -22,8 +21,13 @@ import ListItemText from '@mui/material/ListItemText'
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles'
 import * as React from 'react'
 import Link from 'next/link'
-import { useParams, usePathname, useRouter } from 'next/navigation'
-import { Router } from 'next/router'
+import { usePathname } from 'next/navigation'
+
+function add(a, b): any {
+  return a + b
+}
+
+console.log(add(1, 2))
 
 const drawerWidth = 240
 
@@ -83,21 +87,19 @@ const AppDrawer = () => {
   const navLinks = [
     {
       title: 'Dashboard',
-      path: '/dashboard/',
+      path: '/admin/',
       icons:
-        pathname === '/dashboard/' ? <BarChartIcon style={{ color: 'white' }} /> : <BarChartIcon />,
+        pathname === '/admin/' ? <BarChartIcon style={{ color: 'white' }} /> : <BarChartIcon />,
     },
     {
       title: 'Users',
-      path: '/dashboard/users/',
-      icons:
-        pathname === '/dashboard/users/' ? <UsersActive style={{ color: 'white' }} /> : <Users />,
+      path: '/admin/users/',
+      icons: pathname === '/admin/users/' ? <UsersActive style={{ color: 'white' }} /> : <Users />,
     },
     {
       title: 'Posts',
-      path: '/dashboard/posts/',
-      icons:
-        pathname === '/dashboard/posts/' ? <PostsActive style={{ color: 'white' }} /> : <Posts />,
+      path: '/admin/posts/',
+      icons: pathname === '/admin/posts/' ? <PostsActive style={{ color: 'white' }} /> : <Posts />,
     },
   ]
 

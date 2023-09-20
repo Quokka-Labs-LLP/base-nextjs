@@ -4,6 +4,6 @@ export interface MyBarChartProps {
   xAxisValues: string[]
   barHeightValuesOne: number[]
   barHeightValuesTwo: number[]
-
+  canvasBackgroungColor:string
   yAxisSteps?: number
 }

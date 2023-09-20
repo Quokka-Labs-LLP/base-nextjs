@@ -1,24 +1,21 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-export async function middleware(req: NextRequest) {
+export async function middleware(request: NextRequest) {
   let token: string | undefined
-  if (req.cookies.has('access_token')) {
-    token = req.cookies.get('access_token')?.value
-  } else if (req.headers.get('Authorization')?.startsWith('Bearer ')) {
-    token = req.headers.get('Authorization')?.substring(7)
-  }
+  // if (request.cookies.has('access_token')) {
+  //   token = request.cookies.get('access_token')?.value
+  // }
 
-  if (req.nextUrl.pathname.startsWith('/login') && !token) return
-
+  // token = (request.headers.get('Authorization') as string)?.replace(bearerRegex, 'Bearer')
+  // if (request.nextUrl.pathname.startsWith('/login') && !token) return
   const response = NextResponse.next()
-
-  if (!token) {
-    return NextResponse.redirect(new URL('/login', req.url))
-  }
-  if ((req.url.includes('/login') && token) || (req.nextUrl.pathname === '/' && token)) {
-    return NextResponse.redirect(new URL('/dashboard/posts', req.url))
-  }
+  // if (!token) {
+  //   return NextResponse.redirect(new URL('/login', request.url))
+  // }
+  // if ((request.url.includes('/login') && token) || (request.nextUrl.pathname === '/' && token)) {
+  //   return NextResponse.redirect(new URL('/admin/', request.url))
+  // }
   return response
 }
 

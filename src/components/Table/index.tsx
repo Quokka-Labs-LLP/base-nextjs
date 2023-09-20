@@ -17,39 +17,35 @@ export const TableWrapper = ({
 }: {
   children: React.ReactNode
   maxHeight?: number
-}) => {
-  return (
-    <TableContainer sx={{ maxHeight }}>
-      <Table stickyHeader aria-label='sticky table'>
-        {children}
-      </Table>
-    </TableContainer>
-  )
-}
+}) => (
+  <TableContainer sx={{ maxHeight }}>
+    <Table stickyHeader aria-label='sticky table'>
+      {children}
+    </Table>
+  </TableContainer>
+)
 
-export const PaperWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <Paper sx={{ width: '100%', overflow: 'hidden' }}>{children}</Paper>
-}
+export const PaperWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Paper sx={{ width: '100%', overflow: 'hidden' }}>{children}</Paper>
+)
 
-export const TableHeadWrapper = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <TableHead>
-      <TableRow>{children}</TableRow>
-    </TableHead>
-  )
-}
+export const TableHeadWrapper = ({ children }: { children: React.ReactNode }) => (
+  <TableHead>
+    <TableRow>{children}</TableRow>
+  </TableHead>
+)
 
-export const TableBodyWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <TableBody>{children}</TableBody>
-}
+export const TableBodyWrapper = ({ children }: { children: React.ReactNode }) => (
+  <TableBody>{children}</TableBody>
+)
 
-export const TableRowWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <TableRow>{children}</TableRow>
-}
+export const TableRowWrapper = ({ children }: { children: React.ReactNode }) => (
+  <TableRow>{children}</TableRow>
+)
 
-export const TableCellWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <TableCell>{children}</TableCell>
-}
+export const TableCellWrapper = ({ children }: { children: React.ReactNode }) => (
+  <TableCell>{children}</TableCell>
+)
 export const PaginationWrapper = ({ rows }: { rows: any[] }) => {
   const theme = useTheme()
   const [page, setPage] = React.useState(0)

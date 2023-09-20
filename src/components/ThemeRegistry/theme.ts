@@ -1,3 +1,4 @@
+import { primaryColor, secondaryColor, tertiaryColor } from '@/utils'
 import { createTheme } from '@mui/material/styles'
 import { Roboto } from 'next/font/google'
 
@@ -8,9 +9,9 @@ const roboto = Roboto({
 })
 
 const customThemeOption = {
-  primaryColor: '#ec5f2a',
-  secondaryColor: '#ff9727',
-  tertiaryColor: '#b3e5fc',
+  primaryColor,
+  secondaryColor,
+  tertiaryColor,
 }
 
 const theme = createTheme({

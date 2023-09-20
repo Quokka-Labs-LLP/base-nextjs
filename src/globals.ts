@@ -19,7 +19,6 @@ export function FETCH(
     },
     ...(body ? { body: JSON.stringify(body) } : {}),
   }
-
   return fetch(isFullUrl ? `${url}` : `${apiRoot}${url}`, config).then((res: any) => res.json())
 }
 

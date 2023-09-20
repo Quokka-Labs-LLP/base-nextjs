@@ -5,11 +5,9 @@ import { email, password } from '@/globals'
 import { apiLoginUser } from '@/lib/api-request'
 import { setUserAuth } from '@/redux/features/auth'
 import { useAppDispatch } from '@/redux/hooks'
-
 import { Button, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import React from 'react'
-
 import { useRouter } from 'next/navigation'
 
 import type { AdminLoginInterface } from './index'
@@ -31,7 +29,6 @@ function Login() {
   const dispatch = useAppDispatch()
   const router = useRouter()
   const handleFormSubmit = async (data: AdminLoginInterface) => {
-    console.log(data)
     const r = await apiLoginUser(JSON.stringify(data))
     dispatch(setUserAuth(r))
     router.push('/dashboard/posts')

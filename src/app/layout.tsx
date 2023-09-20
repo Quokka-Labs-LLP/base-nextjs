@@ -1,6 +1,5 @@
 import { Providers } from '@/redux/provider'
 import CssBaseline from '@mui/material/CssBaseline'
-import { useStore } from 'react-redux'
 import * as React from 'react'
 
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry'
