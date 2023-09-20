@@ -1,15 +1,19 @@
-'use client'
+'use client';
 
-import Paper from '@mui/material/Paper'
-import { useTheme } from '@mui/material/styles'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TablePagination from '@mui/material/TablePagination'
-import TableRow from '@mui/material/TableRow'
-import * as React from 'react'
+import Paper from '@mui/material/Paper';
+import { useTheme } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import * as React from 'react';
+
+
+
+
 
 export const TableWrapper = ({
   children,
@@ -31,9 +35,15 @@ export const PaperWrapper = ({ children }: { children: React.ReactNode }) => {
   return <Paper sx={{ width: '100%', overflow: 'hidden' }}>{children}</Paper>
 }
 
-export const TableHeadWrapper = ({ children }: { children: React.ReactNode }) => {
+export const TableHeadWrapper = <T,>({
+  children,
+  ...props
+}: {
+  children: React.ReactNode
+  props?: T
+}) => {
   return (
-    <TableHead>
+    <TableHead {...props}>
       <TableRow>{children}</TableRow>
     </TableHead>
   )

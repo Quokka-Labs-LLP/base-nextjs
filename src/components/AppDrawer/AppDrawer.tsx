@@ -127,6 +127,7 @@ const AppDrawer = () => {
                   textDecoration: 'none',
                   color: `${isActive ? 'white' : theme.palette.primary.main}`,
                 }}
+                data-testid={'path'}
               >
                 <ListItemButton
                   sx={{
