@@ -1,5 +1,3 @@
-import { apiGetTasks } from '@/lib/api-request'
-
 import {
   PaginationWrapper,
   PaperWrapper,
@@ -9,7 +7,6 @@ import {
   TableRowWrapper,
   TableWrapper,
 } from '@/components/Table'
-import { getData } from '@/app/api/post/route'
 
 import ActionButton from './action'
 

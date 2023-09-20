@@ -29,8 +29,14 @@ export const PaperWrapper = ({ children }: { children: React.ReactNode }) => (
   <Paper sx={{ width: '100%', overflow: 'hidden' }}>{children}</Paper>
 )
 
-export const TableHeadWrapper = ({ children }: { children: React.ReactNode }) => (
-  <TableHead>
+export const TableHeadWrapper = <T,>({
+  children,
+  ...props
+}: {
+  children: React.ReactNode
+  props?: T
+}) => (
+  <TableHead {...props}>
     <TableRow>{children}</TableRow>
   </TableHead>
 )

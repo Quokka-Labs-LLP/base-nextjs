@@ -1,5 +1,4 @@
-import { FilteredUser, UserLoginResponse } from './types';
-
+import { FilteredUser, UserLoginResponse } from './types'
 
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT || 'http://localhost:5000'
 
@@ -37,8 +36,6 @@ export async function apiLoginUser(credentials: string): Promise<Pick<UserLoginR
   const response = await fetch(`${SERVER_ENDPOINT}/api/v1/users/login`, {
     method: 'POST',
     credentials: 'include',
-    // // @ts-ignore
-    // withCredentials:true,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -47,7 +44,6 @@ export async function apiLoginUser(credentials: string): Promise<Pick<UserLoginR
 
   return handleResponse<UserLoginResponse>(response).then((data) => data)
 }
-
 
 export async function apiLogoutUser(): Promise<void> {
   const response = await fetch(`${SERVER_ENDPOINT}/api/v1/users/logout`, {
@@ -59,4 +55,12 @@ export async function apiLogoutUser(): Promise<void> {
   })
 
   return handleResponse<void>(response)
+}
+
+export async function getData() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users')
+  if (!response.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  return response.json()
 }
